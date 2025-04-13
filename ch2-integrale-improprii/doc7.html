@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- EXTERNAL LIBRARIES - MathJAX -->
+    <script id="MathJax-script" async 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <!-- PERSONAL STYLES -->
+    <link rel="stylesheet" href="../resources/css/lecture.css">
+
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitolul 2: Testul de Comparație</title>
+</head>
+
+<body>
+    <div class="nav-links">
+        <a href="./doc6.html">Pagina anterioara</a>
+        <a href="./doc8.html">Urmatoarea pagina</a>
+    </div>
+    <div class="section">
+        <h1>Capitolul 2<br>Testul de Comparație pentru Integrale Improprii</h1>
+
+        <div class="definition-box">
+            <h2>Enunțul Testului de Comparație</h2>
+            <p>Fie \( f(x) \) și \( g(x) \) două funcții continue pe \( [a, \infty) \&rpar;, astfel încât:</p>
+            <div class="math-equation">
+                \[
+                f(x) \geq g(x) \quad \text{pentru toate } x \in [a, \infty&rpar;
+                \]
+            </div>
+            <p>Atunci:</p>
+            <ul>
+                <li>Dacă \( \int_a^\infty f(x) \,dx \) <b>converge</b>, atunci și \( \int_a^\infty g(x) \,dx \) <b>converge</b>.</li>
+                <li>Dacă \( \int_a^\infty g(x) \,dx \) <b>diverge</b>, atunci și \( \int_a^\infty f(x) \,dx \) <b>diverge</b>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="definition-box">
+            <h2>Exemplu de Aplicare</h2>
+            <p>Comparam integrală:</p>
+            <div class="math-equation">
+                \[
+                \int_1^{\infty} \frac{1}{x + \sin^2 x} \,dx
+                \]
+            </div>
+            <p>cu integrala mai simplă:</p>
+            <div class="math-equation">
+                \[
+                \int_1^{\infty} \frac{1}{1 + x} \,dx
+                \]
+            </div>
+            <p>Știm că:</p>
+            <div class="math-equation">
+                \[
+                \sin x \leq 1 \quad \Rightarrow \quad \sin^2 x \leq 1
+                \]
+            </div>
+            <p>Adăugând \( x \) pe ambele părți:</p>
+            <div class="math-equation">
+                \[
+                x + \sin^2 x \leq x + 1
+                \]
+            </div>
+            <p>Luând reciprocalii:</p>
+            <div class="math-equation">
+                \[
+                \frac{1}{x + \sin^2 x} \geq \frac{1}{x + 1}
+                \]
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="definition-box">
+            <h2>Evaluarea Integralei</h2>
+            <p>Calculăm integrala:</p>
+            <div class="math-equation">
+                \[
+                \int_1^{\infty} \frac{1}{1 + x} \,dx
+                \]
+            </div>
+            <p>Aplicând limita:</p>
+            <div class="math-equation">
+                \[
+                \lim_{b \to \infty} \int_1^b \frac{1}{1 + x} \,dx
+                \]
+            </div>
+            <p>Integrala funcției \( \frac{1}{1 + x} \) este:</p>
+            <div class="math-equation">
+                \[
+                \ln |1 + x|
+                \]
+            </div>
+            <p>Evaluăm limitele:</p>
+            <div class="math-equation">
+                \[
+                \lim_{b \to \infty} \left[ \ln |1 + b| - \ln 2 \right]
+                \]
+            </div>
+            <p>Deoarece \( \ln(1 + b) \to \infty \), această integrală <b>diverge</b>.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="definition-box">
+            <h2>Concluzie</h2>
+            <p>Prin <b>Testul de Comparație</b>, deoarece:</p>
+            <div class="math-equation">
+                \[
+                \int_1^\infty \frac{1}{1 + x} \,dx
+                \]
+            </div>
+            <p></b>diverge</b>, atunci și integrala inițială:</p>
+            <div class="math-equation">
+                \[
+                \int_1^{\infty} \frac{1}{x + \sin^2 x} \,dx
+                \]
+            </div>
+            <p></b>diverge</b>.</p>
+        </div>
+    </div>
+</body>
+</html>

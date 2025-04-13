@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- EXTERNAL LIBRARIES - MathJAX -->
+    <script id="MathJax-script" async 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <!-- PERSONAL STYLES -->
+    <link rel="stylesheet" href="../resources/css/lecture.css">
+
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitolul 2: Convergență și Divergență</title>
+</head>
+
+<body>
+    <div class="nav-links">
+        <a href="./doc3.html">Pagina anterioara</a>
+        <a href="./doc5.html">Urmatoarea pagina</a>
+    </div>
+    <div class="section">
+        <h1>Capitolul 2<br>Convergență și Divergență a Integralei Improprii</h1>
+
+        <div class="definition-box">
+            <h2>Evaluarea Unei Integrale Improprii</h2>
+            <p>Analizăm următoarea integrală improprie:</p>
+            <div class="math-equation">
+                \[
+                \int_1^{\infty} \frac{1}{x^n} \,dx
+                \]
+            </div>
+            <p>Folosind definiția integralelor improprii, o rescriem ca:</p>
+            <div class="math-equation">
+                \[
+                \lim_{b \to \infty} \int_1^b x^{-n} \,dx
+                \]
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="definition-box">
+            <h2>Calculul Integralei</h2>
+            <p>Rezolvăm integrală:</p>
+            <div class="math-equation">
+                \[
+                \lim_{b \to \infty} \left[ \frac{x^{-n+1}}{-n+1} \right]_1^b
+                \]
+            </div>
+            <p>Expandăm termenii:</p>
+            <div class="math-equation">
+                \[
+                \lim_{b \to \infty} \left[ \frac{b^{-n+1} - 1}{1-n} \right]
+                \]
+            </div>
+            <p>Factorizăm expresia:</p>
+            <div class="math-equation">
+                \[
+                \frac{1}{1-n} \lim_{b \to \infty} (b^{-n+1} - 1)
+                \]
+            </div>
+            <p>Luând limita:</p>
+            <div class="math-equation">
+                \[
+                \frac{1}{1-n} \lim_{b \to \infty} \left( \frac{1}{b^{n-1}} - 1 \right)
+                \]
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="definition-box">
+            <h2>Concluzie</h2>
+            <p>Integrală:</p>
+            <div class="math-equation">
+                \[
+                \int_1^{\infty} \frac{1}{x^n} \,dx
+                \]
+            </div>
+            <ul>
+                <li><b>Converge</b> dacă \( n > 1 \).</li>
+                <li><b>Diverge</b> dacă \( n \leq 1 \).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="definition-box">
+            <h2>Cazuri Speciale</h2>
+            <p>Exemple concrete:</p>
+            <ul>
+                <li>
+                    <div class="math-equation">
+                        \[
+                        \int_1^{\infty} \frac{1}{x^3} \,dx
+                        \]
+                    </div>
+                    <p>Converge deoarece \( 3 > 1 \).</p>
+                </li>
+                <li>
+                    <div class="math-equation">
+                        \[
+                        \int_1^{\infty} \frac{1}{x^{-4}} \,dx
+                        \]
+                    </div>
+                    <p>Diverge deoarece \( -4 < 1 \).</p>
+                </li>
+                <li>
+                    <div class="math-equation">
+                        \[
+                        \int_1^{\infty} x^4 \,dx
+                        \]
+                    </div>
+                    <p>Diverge deoarece \( 4 > 1 \), dar nu este de forma \( \frac{1}{x^n} \).</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

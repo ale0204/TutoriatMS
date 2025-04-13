@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- EXTERNAL LIBRARIES - p5.js and MathJax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <!-- PERSONAL STYLES and SCRIPTS -->
+  <link rel="stylesheet" href="../resources/css/lecture.css">
+  <link rel="stylesheet" href="../resources/css/general.css">
+  <script src="../resources/scripts/integrale-curbilinii/animatie_perdea.js"></script>
+  <script src="../resources/scripts/integrale-curbilinii/animatie_densitate_fir.js"></script>
+
+  <!-- META TAGS and TITLE -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrale Curbilinii - Tip I (Câmp Scalar)</title>
+</head>
+
+<body>
+  <!-- MAIN PAGE HEADING -->
+  <h1>Capitolul 3.1<br>Integrale Curbilinii de Tip I (peste Câmpuri Scalare)</h1>
+  <!-- PLACEHOLDER LINKS FOR NEXT SECTIONS -->
+  <div class="nav-links" style="margin-bottom: 20px;">
+    <a href="./index.html">Lungimea unei curbe. Curbe parametrizate. Integrala Curbilinie</a>
+    <a href="#">Tip I - Integrale Curbilinii Peste Câmpuri Scalare</a>
+    <a href="./tip2.html">Tip II - Integrale Curbilinii Peste Câmpuri Vectoriale</a>
+    <a href="./exercitii.html">Exerciții propuse</a>
+  </div>
+  <main>
+  <div class="section">
+    <div class="definition-box">
+      <h2>Definiție</h2>
+      <p>
+        Fie <em>C</em> o curbă netedă (eventual pe porțiuni), cu
+        o parametrizare \(\vec{r}(t) = (x(t), y(t))\), \(t \in [a,b]\),
+        și fie \(f : \mathbb{R}^2 \to \mathbb{R}\) o funcție (densitate) continuă
+        pe domeniul care conține curba \(C\).
+      </p>
+      <p>
+        Se definește "integrala curbilinie de tip I" (sau integrala curbilinie peste un câmp scalar) drept:
+      </p>
+      <div class="math-equation">
+        \[
+          \int_C f(x,y)\,ds
+          \;=\;
+          \int_a^b f\bigl(x(t),\,y(t)\bigr)\,\sqrt{\bigl(x'(t)\bigr)^2 + \bigl(y'(t)\bigr)^2}\,dt.
+        \]
+      </div>
+      <p>
+        Intuitiv, \(\int_C f(x,y)\,ds\) poate reprezenta, de exemplu, "masa" unui fir subțire
+        în care \(f(x,y)\) este densitatea liniară la punctul \((x,y)\).
+      </p>
+    </div>
+  </div>
+
+  <!-- ILLUSTRATION / SKETCH -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Interpretare a Integralei Curbilinii Tip I</h2>
+      <p>
+        Curba \(C\) este parametrizată de \(\bigl(x(t), y(t)\bigr)\),
+        iar funcția \(f\) descrie un câmp scalar (ca o "densitate"). Fiecare
+        "felie" a curbei contribuie cu \(f(x^*, y^*)\, \Delta s\) la integrala totală.
+      </p>
+        Pe lângă interpretarea fizică (masa unui fir), integrala curbilinie de tip I
+        poate fi privită ca aria pentru o  "perdea" generată
+        peste curbă (când se ridică la înălțimea \(f\)).
+      </p>
+    </div>
+  </div>
+
+  <!-- ANIMATION: PERDEA -->
+  <div class="section">
+    <div class="animation-container">
+      <h2>Animație: Perdea (Cortina)</h2>
+      <div id="cortinaAnimationCanvas"></div>
+      <div class="animation-controls">
+        <span>Număr de puncte: <span id="perdeaPointsValue">100</span></span>
+        <div id="perdeaPointsSliderContainer"></div>
+      </div>
+      <p>
+        Această animație ilustrează cum \(\int_C f(x,y)\,ds\) poate fi văzută drept
+        aria laterală a unei "perdele" care pornește din curbă (proiectată pe planul \(xy\))
+        și se ridică până la \(z = f(x,y)\).
+      </p>
+    </div>
+  </div>
+
+  <!-- ANIMATION: DENSITY VISUALIZATION -->
+  <div class="section">
+    <div class="animation-container">
+      <h2>Animație: Densitatea Firului</h2>
+      <div id="densityVisualizationCanvas"></div>
+      <!-- Add any slider or control here, if desired -->
+      <p>
+        Aici, un fir (curba \(C\)) are o "grosime" variabilă...
+      </p>
+    </div>
+  </div>
+  <!-- Removed the extra </div> here -->
+
+  <!-- PROPRIETĂȚI ȘI INTERPRETĂRI -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Proprietăți și Interpretări</h2>
+      <ul style="padding-left: 40px;">
+        <li>
+          <em>Independență de parametrizare</em>: Cu condiția ca parametrizările
+          să fie bijective și suficient de netede, integrala nu depinde de felul
+          în care este descrisă curba \(C\).
+        </li>
+        <li>
+          Dacă \(\gamma\) este compusă din mai multe arce netede
+          (\(C = C_1 \cup C_2 \cup \dots\)), atunci
+          \[
+            \int_C f(x,y)\,ds
+            =
+            \int_{C_1} f + \int_{C_2} f + \dots
+          \]
+        </li>
+        <li>
+          Aplicații: calculul masei unui fir cu densitate \(\rho(x,y)\),
+          "suprafața laterală" a unei "perdele" de înălțime variabilă \(f\), etc.
+        </li>
+      </ul>
+    </div>
+  </div>
+  </main>
+</body>
+</html>

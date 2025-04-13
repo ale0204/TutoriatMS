@@ -1,0 +1,164 @@
+$menu-bg-color: var(--menu-bg-color);
+$menu-text-color: var(--menu-text-color);
+$menu-hover-bg: var(--menu-hover-bg);
+$menu-hover-color: var(--menu-hover-color);
+$submenu-bg-color: var(--submenu-bg-color);
+$submenu-hover-bg: var(--submenu-hover-bg);
+$transition-duration: 0.3s;
+$arrow-size: 12px;
+$shadow-color: rgba(0, 0, 0, 0.2);
+
+@mixin transition($properties...) {
+  $transitions: ();
+  @each $property in $properties {
+    $transitions: append($transitions, $property $transition-duration ease-in-out, comma);
+  }
+  transition: $transitions;
+}
+
+@mixin transform($value) {
+  transform: $value;
+}
+
+@mixin inner-shadow($x, $y, $blur, $spread, $color) {
+  box-shadow: inset $x $y $blur $spread $color;
+}
+
+.navbar {
+  width: 100%;
+  background-color: $menu-bg-color;
+  margin-bottom: 0;
+  
+  .menu-container {
+    & > ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+      
+      & > li {
+        position: relative;
+        margin-bottom: 0; 
+        
+        & > a {
+          display: block;
+          padding: 15px 20px;
+          margin-bottom: 0; 
+          color: $menu-text-color;
+          text-decoration: none;
+          @include transition(color, background-color, box-shadow);
+          
+          // iconuro in meniu
+          i {
+            margin-right: 8px;
+          }
+          
+          // hover pe link-urile principale
+          &:hover {
+            color: $menu-text-color; 
+            background-color: $menu-bg-color; 
+            @include inner-shadow(0, 0, 8px, 0, $shadow-color); 
+          }
+        }
+        
+        & > ul {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          background-color: $submenu-bg-color;
+          z-index: 100;
+          box-shadow: 0 4px 8px $shadow-color;
+          
+          max-height: 0;
+          overflow: hidden;
+          @include transform(scaleY(0));
+          transform-origin: top;
+          @include transition(max-height, transform);
+          
+          & > li {
+            position: relative;
+            
+            // sageata care va glisa la hover
+            &::before {
+              content: '\f054'; // cod font Awesome pt sageata
+              font-family: 'Font Awesome 5 Free';
+              font-weight: 900;
+              position: absolute;
+              left: -$arrow-size;
+              top: 50%;
+              transform: translateY(-50%);
+              font-size: $arrow-size;
+              color: $menu-hover-color;
+              opacity: 0;
+              @include transition(left, opacity);
+            }
+            
+            // Link-uri din submeniu
+            & > a {
+              display: block;
+              padding: 12px 20px;
+              color: $menu-text-color;
+              text-decoration: none;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+              @include transition(color, background-color, padding-left);
+              
+              i {
+                margin-right: 8px;
+                @include transition(transform);
+              }
+              
+              &:hover {
+                color: $menu-hover-color;
+                background-color: $submenu-hover-bg;
+                padding-left: 25px; // spatiu pentru sageata
+                
+                // Rotire a icons la hover
+                i {
+                  @include transform(rotate(5deg));
+                }
+              }
+            }
+            
+            // La hover pe element li afisam sageata
+            &:hover::before {
+              left: 10px;
+              opacity: 1;
+            }
+          }
+        }
+        
+        // La hover pe elementul parinte, afisam submeniul
+        &:hover > ul {
+          max-height: 500px; 
+          @include transform(scaleY(1));
+        }
+      }
+    }
+  }
+}
+
+@for $i from 1 through 8 { 
+  .navbar .menu-container > ul > li:nth-child(#{$i}) {
+    & > a {
+      border-bottom: 3px solid transparent;
+      @include transition(border-bottom-color);
+    }
+    
+    &:hover > a {
+      border-bottom-color: var(--menu-accent-color-#{$i});
+    }
+    
+    & > ul > li:hover::before {
+      color: var(--menu-accent-color-#{$i});
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  //TODO in nav700
+}

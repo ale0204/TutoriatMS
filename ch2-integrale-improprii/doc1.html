@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- EXTERNAL LIBRARIES - p5.js and MathJAX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script id="MathJax-script" async 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <!-- PERSONAL STYLES -->
+    <link rel="stylesheet" href="../resources/css/lecture.css">
+    <script src="../resources/scripts/integrale-improprii/curves.js"></script>
+
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitolul 2: Integrale Improprii</title>
+</head>
+
+<body>
+    <div class="nav-links">
+        <a href="./doc2.html">Urmatoarea pagina</a>
+    </div>
+    <div class="section">
+        <h1>Capitolul 2<br>Integrale Improprii</h1>
+
+        <div class="definition-box">
+            <h2>Definiția Integralei Improprii</h2>
+            <p>O integrală este improprie în două cazuri:</p>
+            <ol>
+                <li>Intervalul de integrare este infinit.</li>
+                <li>Funcția nu este mărginită pe intervalul de integrare.</li>
+            </ol>
+        </div>
+
+        <div class="definition-box">
+            <h2>Forma Generală</h2>
+            <p>O integrală definită standard este:</p>
+            <div class="math-equation">
+                \[
+                \int_a^b f(x) \,dx
+                \]
+            </div>
+            <p>unde funcția \( f(x) \) trebuie să fie <b>mărginită</b> și <b>finita</b> pe \( (a, b) \).</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>1. Intervalul de Integrare Este Infinit</h2>
+        <div class="animation-container">
+            <h3>Exemplu Vizual</h3>
+            <div id="curve1"></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2. Funcția Nu Este Mărginită</h2>
+        <div class="animation-container">
+            <h3>Exemplu Vizual</h3>
+            <div id="curve2"></div>
+        </div>
+    </div>
+</body>
+</html>

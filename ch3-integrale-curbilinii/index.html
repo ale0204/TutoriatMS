@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- EXTERNAL LIBRARIES - p5.js and MathJAX -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <!-- PERSONAL STYLES and SCRIPTS -->
+  <link rel="stylesheet" href="../resources/css/lecture.css">
+  <link rel="stylesheet" href="../resources/css/general.css">
+  <script src="../resources/scripts/integrale-curbilinii/animatie-lungime-drum.js"></script>
+  <script src="../resources/scripts/integrale-curbilinii/desene_parametrizari.js"></script>
+
+  <!-- META TAGS and TITLE -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capitolul 3: Lungimea unei curbe. Curbe parametrizate. Integrala Curbilinie (de drum)</title>
+</head>
+
+<body>
+  <!-- MAIN PAGE HEADING -->
+  <h1>Capitolul 3<br>Lungimea unei curbe. Curbe parametrizate. Integrala Curbilinie (de drum)</h1>
+
+  <!-- PLACEHOLDER LINKS FOR NEXT SECTIONS -->
+  <div class="nav-links" style="margin-bottom: 20px;">
+    <a href="#">Lungimea unei curbe. Curbe parametrizate. Integrala Curbilinie</a>
+    <a href="./tip1.html">Tip I - Integrale Curbilinii Peste Câmpuri Scalare</a>
+    <a href="./tip2.html">Tip II - Integrale Curbilinii Peste Câmpuri Vectoriale</a>
+    <a href="./exercitii.html">Exerciții propuse</a>
+  </div>
+  <main>
+
+  <!-- SECTION: CURBE PARAMETRIZATE -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Curbe Parametrizate</h2>
+      <p>
+        Se numește <em>curbă</em> în \(\mathbb{R}^n\) (cu \(n=2\) sau \(n=3\)) orice mulțime \(\gamma\)
+        care este imaginea unei funcții continue \(\gamma : [a,b] \to \mathbb{R}^n\).
+      </p>
+      <p>
+        Spre exemplu, pentru \(n=2\), o parametrizare este \(\gamma(t) = \bigl(x(t), y(t)\bigr), t \in [a,b]\),
+        iar pentru \(n=3\), \(\gamma(t) = \bigl(x(t), y(t), z(t)\bigr)\).
+      </p>
+      <p>
+        Funcția \(\gamma\) se numește <em>parametrizarea</em> curbei, iar mulțimea
+        \[
+          \gamma = \{\gamma(t) : t \in [a,b]\}
+        \]
+        reprezintă chiar curbă în plan (sau spațiu). Observație: Orice curbă are
+        o infinitate de parametrizări echivalente.
+      </p>
+      <p>
+        În general, se numește <strong>parametrizare</strong> a unei curbe \(\gamma\) o funcție continuă
+        \(\vec{r} : [a,b] \to \mathbb{R}^n\) astfel încât fiecare punct \(\vec{r}(t)\) descrie un punct pe
+        curbă. Dacă \(\vec{r}(a) = \vec{r}(b)\), atunci curba este <em>închisă</em>.
+      </p>
+    </div>
+  </div>
+
+<!-- SECTION: EXEMPLE DE CURBE -->
+<div class="section">
+  <div class="definition-box">
+    <h2>Exemple Uzuale de Curbe în Plan</h2>
+
+    <!-- CERCUL -->
+    <div class="animation-container">
+      <h3>Cercul de rază \(R\) centrat în origine</h3>
+      <div id="circleCanvas"></div>
+      <ul>
+        <li>Ecuația cercului:
+          \[
+            x^2 + y^2 = R^2
+          \]
+        </li>
+        <li>Parametrizare:
+          \[
+            x(t) = R\cos t, \quad y(t) = R\sin t, \quad t \in [0, 2\pi].
+          \]
+        </li>
+      </ul>
+    </div>
+
+    <!-- ELIPSA -->
+    <div class="animation-container">
+      <h3>Elipsa centrată în origine</h3>
+      <div id="ellipseCanvas"></div>
+      <ul>
+        <li>Ecuația elipsei:
+          \[
+            \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1
+          \]
+        </li>
+        <li>Parametrizare:
+          \[
+            x(t) = a\cos t, \quad y(t) = b\sin t, \quad t \in [0, 2\pi].
+          \]
+        </li>
+      </ul>
+    </div>
+
+    <!-- LINE SEGMENT -->
+    <div class="animation-container">
+      <h3>Segment de dreaptă între două puncte</h3>
+      <div id="lineSegmentCanvas"></div>
+      <ul>
+        <li>Parametrizare între două puncte \( A(x_A, y_A) \) și \( B(x_B, y_B) \):
+          \[
+            x(t) = x_A + (x_B - x_A)t, \quad y(t) = y_A + (y_B - y_A)t, \quad t \in [0,1].
+          \]
+        </li>
+      </ul>
+    </div>
+
+    <!-- POLYGON -->
+    <div class="animation-container">
+      <h3>Poligon</h3>
+      <div id="polygonCanvas"></div>
+      <p>Succesiune de segmente care pot închide o regiune \(triunghi, dreptunghi, etc.\). Fiecare segment se parametrizează separat.</p>
+    </div>
+
+    <!-- PARABOLA -->
+    <div class="animation-container">
+      <h3>Parabolă \(y = x^2\)</h3>
+      <div id="parabolaCanvas"></div>
+      <ul>
+        <li>Ecuația parabolei:
+          \[
+            y = x^2
+          \]
+        </li>
+        <li>Parametrizare simplă:
+          \[
+            x(t) = t, \quad y(t) = t^2, \quad t \in [a, b].
+          \]
+        </li>
+      </ul>
+    </div>
+    <p>
+      Aceste curbe sunt des folosite în exemple și exerciții. Toate exercitiile vor presupune cunoașterea acestor parametrizări, cu diverse variații.
+    </p>
+  </div>
+</div>
+
+  <!-- SECTION: LUNGIMEA UNUI DRUM -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Lungimea unui drum</h2>
+      <p>
+        Dacă \(\gamma(t) = (x(t), y(t))\) este o parametrizare a curbei \(C\) în plan, \(t \in [a,b]\),
+        lungimea drumului se calculează prin:
+      </p>
+      <div class="math-equation">
+        \[
+          L = \int_a^b \sqrt{\bigl(x'(t)\bigr)^2 + \bigl(y'(t)\bigr)^2}\,dt.
+        \]
+      </div>
+      <p>
+        Pentru curbele definite prin \(y = f(x)\), parametrizarea se poate alege ca:
+      </p>
+      <div class="math-equation">
+        \[
+          x(t) = t, \quad y(t) = f(t), \quad t \in [a,b].
+        \]
+      </div>
+      <p>
+        În acest caz, dacă \(f\) este derivabilă, lungimea curbei poate fi exprimată și prin:
+      </p>
+      <div class="math-equation">
+        \[
+          L = \int_a^b \sqrt{1 + \bigl(f'(t)\bigr)^2}\,dt.
+        \]
+      </div>
+      <p>
+        Notăm cu \(C\) curbă și cu \(\gamma(t)\) parametrizarea acesteia, adică
+        \(\gamma(t) = (x(t), y(t))\). Elementul infinitesimal de lungime, \(dL\), se definește drept:
+      </p>
+      <div class="math-equation">
+        \[
+          dL = \sqrt{(dx)^2 + (dy)^2} = \sqrt{\bigl(x'(t)\bigr)^2 + \bigl(y'(t)\bigr)^2}\, dt.
+        \]
+      </div>
+      <p>
+        Astfel, lungimea curbei \(C\) se exprimă prin integrala curbilinie:
+      </p>
+      <div class="math-equation">
+        \[
+          L = \int_C dL = \int_a^b \sqrt{\bigl(x'(t)\bigr)^2 + \bigl(y'(t)\bigr)^2}\, dt.
+        \]
+      </div>
+      <p>
+        În animația de mai jos, se aproximează lungimea curbei printr-o succesiune de segmente între puncte de pe parametrizare.
+      </p>
+    </div>
+
+    <div class="animation-container">
+      <h2>Animație: Lungimea Unei Curbe</h2>
+      <div id="arcLengthCanvas"></div>
+      <div class="animation-controls">
+        <span>Număr de segmente: <span id="arcLengthValue">4</span></span>
+        <span id="arcLengthSliderContainer"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCITIU REZOLVAT -->
+  <div class="definition-box">
+    <h2>Exercițiu rezolvat: Calculul lungimii unei curbe</h2>
+    <p>
+      De exemplu, dacă considerăm \(f(t) = t^2\) (o parabolă), atunci parametrizarea devine:
+    </p>
+    <div class="math-equation">
+      \[
+        x(t) = t, \quad y(t) = t^2, \quad t \in [a, b].
+      \]
+    </div>
+    <p>
+      Lungimea curbei \(y = t^2\) (pentru \(t \in [-1, 1]\)) se calculează prin formula:
+    </p>
+    <div class="math-equation">
+      \[
+        L = \int_{-1}^{1} \sqrt{1 + (2t)^2}\, dt = \int_{-1}^{1} \sqrt{1 + 4t^2}\, dt.
+      \]
+    </div>
+  </div>
+
+  <!-- CURBE INCHISE -->
+  <div class="definition-box">
+    <h2>Curbe Închise</h2>
+    <p>
+      Se numește <em>curbă închisă</em> orice curbă parametrizată
+      \(\gamma : [a,b] \to \mathbb{R}^2\) pentru care
+      \(\gamma(a) = \gamma(b)\). Cu alte cuvinte, traiectoria
+      se întoarce în punctul de plecare, formând o buclă.
+    </p>
+    <p>
+      De exemplu, dacă \(\gamma(t)\) descrie o mișcare în plan și
+      \(\gamma(a) = \gamma(b)\), atunci poziția la momentul \(t=a\)
+      coincide cu poziția la momentul \(t=b\). Traseul parcurs este, deci, închis.
+    </p>
+    <p>
+      Curbele închise apar frecvent în analiza vectorială (de ex., teorema lui Green,
+      teorema lui Stokes), deoarece integralele de-a lungul buclelor pot avea
+      proprietăți speciale.
+    </p>
+  </div>
+</main>
+</body>
+</html>

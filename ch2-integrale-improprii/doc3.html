@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- EXTERNAL LIBRARIES - MathJAX -->
+    <script id="MathJax-script" async 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <!-- PERSONAL STYLES -->
+    <link rel="stylesheet" href="../resources/css/lecture.css">
+
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitolul 2: Convergență și Divergență</title>
+</head>
+
+<body>
+    <div class="nav-links">
+        <a href="./doc2.html">Pagina anterioara</a>
+        <a href="./doc4.html">Urmatoarea pagina</a>
+    </div>
+    <div class="section">
+        <h1>Capitolul 2<br>Convergență și Divergență a Integralei Improprii</h1>
+
+        <div class="definition-box">
+            <h2>Criteriul de Convergență</h2>
+            <p>Integralele improprii sunt evaluate folosind limite. O integrală este:</p>
+            <ul>
+                <li><b>Convergentă</b> dacă limita există.</li>
+                <li><b>Divergentă</b> dacă limita <b>nu există</b>.</li>
+            </ul>
+            <p>Forma generală:</p>
+            <div class="math-equation">
+                \[
+                \int_a^{\infty} f(x) \,dx = \lim_{b \to \infty} \int_a^b f(x) \,dx
+                \]
+            </div>
+            <div class="math-equation">
+                \[
+                \int_{-\infty}^{b} f(x) \,dx = \lim_{a \to -\infty} \int_a^b f(x) \,dx
+                \]
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="definition-box">
+            <h2>Exemplu de Integrală Improprie</h2>
+            <h3>Integrală studiată:</h3>
+            <div class="math-equation">
+                \[
+                \int_1^{\infty} \frac{3}{x} \,dx
+                \]
+            </div>
+            <p>Calculăm:</p>
+            <div class="math-equation">
+                \[
+                \lim_{b \to \infty} \int_1^b \frac{3}{x} \,dx
+                \]
+            </div>
+            <p>Integrala funcției \( \frac{3}{x} \) este:</p>
+            <div class="math-equation">
+                \[
+                \lim_{b \to \infty} \left[ 3 \ln |x| \right]_1^b
+                \]
+            </div>
+        </div>
+
+        <div class="definition-box">
+            <h2>Evaluarea Limitelor</h2>
+            <p>Dezvoltăm expresia:</p>
+            <div class="math-equation">
+                \[
+                \lim_{b \to \infty} \left[ 3 (\ln b - \ln 1) \right]
+                \]
+            </div>
+            <p>Deoarece \( \ln 1 = 0 \), obținem:</p>
+            <div class="math-equation">
+                \[
+                \lim_{b \to \infty} 3 \ln b = \infty
+                \]
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="definition-box">
+            <h2>Concluzie</h2>
+            <p>Deoarece limita duce la infinit, integrala este <b>divergentă</b>.</p>
+        </div>
+    </div>
+</body>
+</html>

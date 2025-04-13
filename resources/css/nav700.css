@@ -1,0 +1,329 @@
+/* CSS pentru meniu responsiv - doar pentru tablete și telefoane mobile */
+
+/* Variabile de bază (dacă nu sunt deja definite în general.css) */
+:root {
+    --menu-bg-color: #3a6d96;
+    --menu-text-color: #ffffff;
+    --menu-hover-bg: #2c5475;
+    --menu-hover-color: #ffffff;
+    --submenu-bg-color: #2c5475;
+    --submenu-hover-bg: #1e3c54;
+    --hamburger-animation-color1: #ff7f50; /* Coral */
+    --hamburger-animation-color2: #40e0d0; /* Turquoise */
+    --hamburger-animation-color3: #ffd700; /* Gold */
+}
+
+/* Ajustează poziționarea header-ului pentru a asigura că hamburger menu 
+   apare în colțul stânga sus al navbar-ului, nu al header-ului */
+header {
+  position: relative;
+}
+
+/* Hamburger menu pentru mobil - ascuns pe desktop */
+.navbar .hamburger-toggle {
+  display: none;
+}
+
+.navbar .hamburger-menu {
+  display: none;
+  cursor: pointer;
+  padding: 15px;
+  color: var(--menu-text-color);
+  position: relative;
+  z-index: 110;
+  text-align: left; /* Aliniere la stânga în loc de centru */
+}
+
+/* Container pentru icon-ul hamburger */
+.hamburger-icon {
+  width: 30px;
+  height: 24px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Liniile hamburger */
+.hamburger-line {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: var(--menu-text-color);
+  border-radius: 2px;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Poziționarea fiecărei linii */
+.hamburger-line:nth-child(1) {
+  top: 0;
+}
+
+.hamburger-line:nth-child(2) {
+  top: 10px; /* Poziționat la mijloc */
+}
+
+.hamburger-line:nth-child(3) {
+  top: 20px; /* Poziționat jos */
+}
+
+/* Stilizarea checkbox-urilor pentru submeniuri */
+.navbar .submenu-toggle {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Zona clickabilă pentru submeniuri pe mobil */
+.navbar .submenu-label {
+  display: none;
+}
+
+/* Definirea animațiilor pentru apariția iconului hamburger */
+@keyframes hamburger-line-animation {
+  0% {
+    transform: translateY(-10px) scale(0);
+    opacity: 0;
+  }
+  33% {
+    transform: translateY(0) scale(0.7) rotate(45deg);
+    opacity: 0.5;
+  }
+  66% {
+    transform: translateY(0) scale(1.2) rotate(-45deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+/* Stiluri pentru ecran mediu (768px - 992px) - TABLETA */
+@media screen and (max-width: 992px) {
+  .navbar .menu-container > ul > li > a {
+    padding: 12px 15px;
+    font-size: 0.9em;
+  }
+  
+  /* Înlocuiește textul "Acasă" cu icon-ul de căsuță */
+  .navbar .menu-container > ul > li:first-child > a span.home-text {
+    display: none;
+  }
+  
+  .navbar .menu-container > ul > li:first-child > a i.fa-house {
+    margin-right: 0;
+    font-size: 1.2em;
+  }
+}
+
+/* Stiluri pentru ecran mic (max 768px) - TELEFON MOBIL */
+@media screen and (max-width: 768px) {
+  /* Repoziționare hamburger în colțul stânga sus */
+  .navbar {
+    position: relative;
+    min-height: 54px; /* Asigură că navbar-ul are o înălțime minimă pentru a afișa butonul hamburger */
+  }
+  
+  /* Arată checkbox-ul hamburger (ascuns vizual) și label-ul */
+  .navbar .hamburger-toggle {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 120;
+    cursor: pointer;
+    width: 54px;
+    height: 54px;
+    margin: 0;
+  }
+  
+  .navbar .hamburger-menu {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 15px;
+    background-color: var(--menu-bg-color); 
+    z-index: 150; 
+  }
+  
+  /* aplicarea animatiilor pentru liniile hamburger - partea SASS compilata */
+  .navbar .hamburger-menu .hamburger-line:nth-child(1) {
+    animation: hamburger-line-animation 0.7s ease-in-out;
+    animation-delay: 0ms;
+    animation-fill-mode: forwards;
+    background-color: var(--hamburger-animation-color1);
+  }
+  
+  .navbar .hamburger-menu .hamburger-line:nth-child(2) {
+    animation: hamburger-line-animation 0.7s ease-in-out;
+    animation-delay: 300ms;
+    animation-fill-mode: forwards;
+    background-color: var(--hamburger-animation-color2);
+  }
+  
+  .navbar .hamburger-menu .hamburger-line:nth-child(3) {
+    animation: hamburger-line-animation 0.7s ease-in-out;
+    animation-delay: 600ms;
+    animation-fill-mode: forwards;
+    background-color: var(--hamburger-animation-color3);
+  }
+  
+  .navbar .hamburger-toggle:checked ~ .hamburger-menu {
+    text-align: left;
+    height: 30px;
+    width: 30px;
+  }
+  
+  /* animatie pt transformarea hamburger-ului in X cand meniul e deschis */
+  .hamburger-toggle:checked ~ .hamburger-menu .hamburger-line:nth-child(1) {
+    transform: rotate(45deg);
+    top: 10px;
+    background-color: var(--hamburger-animation-color1);
+    animation: none;
+  }
+
+  .hamburger-toggle:checked ~ .hamburger-menu .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+    background-color: var(--hamburger-animation-color2);
+    animation: none;
+  }
+
+  .hamburger-toggle:checked ~ .hamburger-menu .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 10px;
+    background-color: var(--hamburger-animation-color3);
+    animation: none;
+  }
+  
+  /* Stilizare pentru meniul principal pe mobil */
+  .navbar .menu-container > ul {
+    position: absolute;
+    top: 0; /* porneste din coltul st sus */
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: var(--menu-bg-color);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform-origin: left top; 
+    transform: scale(0.1, 0);
+    transition: transform 0.7s ease, max-height 0.7s ease, opacity 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* deschide meniul cand checkbox-ul e bifat */
+  .navbar .hamburger-toggle:checked ~ .menu-container > ul {
+    max-height: 2000px; 
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  
+  /* pune padding doar la primul element de meniu pt a face loc butonului hamburger */
+  .navbar .hamburger-toggle:checked ~ .menu-container > ul > li:first-child {
+    margin-top: 54px;
+  }
+  
+  /* stilizare pt elemente din meniu pe mobil */
+  .navbar .menu-container > ul > li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .navbar .menu-container > ul > li > a {
+    padding: 15px;
+    border-bottom: none;
+  }
+  
+  .navbar .menu-container > ul > li > ul {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    transform: none;
+    transition: max-height 0.4s ease-in-out;
+    background-color: var(--submenu-bg-color);
+  }
+  
+  /* ilocuieste hover cu un mecanism de click pt submeniuri */
+  .navbar .menu-container > ul > li > a {
+    position: relative;
+  }
+  
+  /* modificarea poz checkbox-urilor pt submeniu */
+  .navbar .submenu-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 46px;
+    z-index: 15;
+  }
+  
+  /* crearea unei zone clickabile peste sageata din submeniu */
+  .navbar .submenu-label {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 46px;
+    z-index: 10;
+  }
+  
+  /* add icon pt submeniu */
+  .navbar .menu-container > ul > li.has-submenu > a:after,
+  .navbar .menu-container > ul > li:first-child > a:after {
+    content: '\f078'; /* Chevron down */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 15px;
+    transition: transform 0.3s ease;
+  }
+  
+  /* rotirea sagetii cand submeniul e deschis */
+  .navbar .submenu-toggle:checked ~ a:after {
+    transform: rotate(180deg);
+  }
+  
+  /* sarea submeniu deschis */
+  .navbar .submenu-toggle:checked ~ ul {
+    max-height: 500px;
+    transform: scaleY(1);
+  }
+  
+  /*suprascrie stilurile din nav.css */
+  .navbar .menu-container > ul > li > ul {
+    max-height: 0;
+    overflow: hidden;
+    transform: scaleY(0);
+  }
+  
+  .navbar .menu-container > ul > li > ul > li > a {
+    padding: 15px 20px;
+  }
+  
+  /* animatie de scalare pentru submeniuri */
+  .navbar .menu-container > ul > li > ul {
+    transform-origin: top;
+    transition: max-height 0.4s ease-out, transform 0.4s ease-out;
+  }
+  
+  /* eliminarea sagetii */
+  .navbar .menu-container > ul > li > ul > li::before {
+    display: none;
+  }
+  
+  .navbar .menu-container > ul > li > ul > li > a:hover {
+    padding-left: 20px;
+    box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.5);
+  }
+}

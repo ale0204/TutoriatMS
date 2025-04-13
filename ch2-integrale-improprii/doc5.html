@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- EXTERNAL LIBRARIES - MathJAX -->
+    <script id="MathJax-script" async 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <!-- PERSONAL STYLES -->
+    <link rel="stylesheet" href="../resources/css/lecture.css">
+
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitolul 2: Integrale Improprii - Funcții Exponențiale</title>
+</head>
+
+<body>
+    <div class="nav-links">
+        <a href="./doc4.html">Pagina anterioara</a>
+        <a href="./doc6.html">Urmatoarea pagina</a>
+    </div>
+    <div class="section">
+        <h1>Capitolul 2<br>Integrale Improprii - Funcții Exponențiale</h1>
+
+        <div class="definition-box">
+            <h2>Exemplu 1</h2>
+            <p>Evaluăm integrala improprie:</p>
+            <div class="math-equation">
+                \[
+                \int_1^{\infty} e^{-2x} \,dx
+                \]
+            </div>
+            <p>Rescriem utilizând limite:</p>
+            <div class="math-equation">
+                \[
+                \lim_{b \to \infty} \int_1^b e^{-2x} \,dx
+                \]
+            </div>
+        </div>
+
+        <div class="definition-box">
+            <h2>Calculul Integralei</h2>
+            <p>Substituind \( u = -2x \), \( du = -2dx \), obținem:</p>
+            <div class="math-equation">
+                \[
+                \int e^u \frac{du}{-2}
+                \]
+            </div>
+            <p>Evaluăm integrală:</p>
+            <div class="math-equation">
+                \[
+                -\frac{1}{2} \lim_{b \to \infty} \left[ e^{-2x} \right]_1^b
+                \]
+            </div>
+            <p>Înlocuim limitele:</p>
+            <div class="math-equation">
+                \[
+                -\frac{1}{2} \lim_{b \to \infty} \left[ e^{-2b} - e^{-2} \right]
+                \]
+            </div>
+            <p>Deoarece \( e^{-2b} \to 0 \) pentru \( b \to \infty \), obținem:</p>
+            <div class="math-equation">
+                \[
+                -\frac{1}{2} (0 - e^{-2})
+                \]
+            </div>
+            <p>Rezultatul final:</p>
+            <div class="math-equation">
+                \[
+                \frac{1}{2e^2}
+                \]
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="definition-box">
+            <h2>Exemplu 2</h2>
+            <p>Evaluăm integrala improprie:</p>
+            <div class="math-equation">
+                \[
+                \int_{-\infty}^{0} x e^x \,dx
+                \]
+            </div>
+            <p>Folosind metoda părților, alegem:</p>
+            <ul>
+                <li>\( u = x \), \( dv = e^x dx \)</li>
+                <li>\( du = dx \), \( v = e^x \)</li>
+            </ul>
+            <p>Aplicăm integrarea prin părți:</p>
+            <div class="math-equation">
+                \[
+                \lim_{a \to -\infty} \left[ x e^x - \int e^x dx \right]_a^0
+                \]
+            </div>
+            <p>Evaluăm integrală:</p>
+            <div class="math-equation">
+                \[
+                \lim_{a \to -\infty} \left[ e^x (x - 1) \right]_a^0
+                \]
+            </div>
+        </div>
+
+        <div class="definition-box">
+            <h2>Calculul Limitelor</h2>
+            <p>Expandăm expresia:</p>
+            <div class="math-equation">
+                \[
+                \lim_{a \to -\infty} \left[ e^0 (0 - 1) - e^a (a - 1) \right]
+                \]
+            </div>
+            <p>Observăm că:</p>
+            <div class="math-equation">
+                \[
+                -1 - \lim_{a \to -\infty} a e^a
+                \]
+            </div>
+            <p>Aplicăm regula lui L'Hôpital:</p>
+            <div class="math-equation">
+                \[
+                \lim_{a \to -\infty} \frac{a}{e^{-a}} = \lim_{a \to -\infty} \frac{1}{e^{-a}}
+                \]
+            </div>
+            <p>Deoarece \( e^{-a} \to \infty \), limita devine 0, astfel rezultatul final este:</p>
+            <div class="math-equation">
+                \[
+                -1 + 0 = -1
+                \]
+            </div>
+        </div>
+    </div>
+</body>
+</html>

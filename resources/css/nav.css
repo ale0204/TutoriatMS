@@ -1,0 +1,228 @@
+body {
+    --menu-bg-color: #3a6d96;
+    --menu-text-color: #ffffff;
+    --menu-hover-bg: #2c5475;
+    --menu-hover-color: #ffffff;
+    --submenu-bg-color: #2c5475;
+    --submenu-hover-bg: #1e3c54;
+    
+    --menu-accent-color-1: #ff7f50; /* Coral */
+    --menu-accent-color-2: #9acd32; /* YellowGreen */
+    --menu-accent-color-3: #40e0d0; /* Turquoise */
+    --menu-accent-color-4: #ba55d3; /* MediumOrchid */
+    --menu-accent-color-5: #ffd700; /* Gold */
+    --menu-accent-color-6: #ff6347; /* Tomato */
+    --menu-accent-color-7: #87cefa; /* LightSkyBlue */
+    --menu-accent-color-8: #ff1493; /* DeepPink - pentru Contact */
+}
+
+.navbar .menu-container {
+  width: 100%;
+  margin-bottom: 0; 
+}
+
+.navbar .menu-container > ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: space-between; /* distribuie elem pe toata laatimea */
+}
+
+.navbar .menu-container > ul > li {
+  position: relative;
+  margin-bottom: 0; 
+}
+
+.navbar .menu-container > ul > li > a {
+  display: block;
+  padding: 15px 20px;
+  margin-bottom: 0; 
+  color: var(--menu-text-color);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.navbar .menu-container > ul > li > a i {
+  margin-right: 8px;
+}
+
+.navbar .menu-container > ul > li > a:hover {
+  color: var(--menu-text-color); 
+  box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.navbar .menu-container > ul > li > ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: var(--submenu-bg-color);
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-height: 0;
+  overflow: hidden;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: max-height 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.navbar .menu-container > ul > li > ul > li {
+  position: relative;
+}
+
+.navbar .menu-container > ul > li > ul > li::before {
+  content: '\f054';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--menu-hover-color);
+  opacity: 0;
+  transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.navbar .menu-container > ul > li > ul > li > a {
+  display: block;
+  padding: 12px 20px;
+  color: var(--menu-text-color);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, padding-left 0.3s ease-in-out;
+}
+
+.navbar .menu-container > ul > li > ul > li > a i {
+  margin-right: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar .menu-container > ul > li > ul > li > a:hover {
+  color: var(--menu-hover-color);
+  background-color: var(--submenu-hover-bg);
+  padding-left: 25px;
+}
+
+.navbar .menu-container > ul > li > ul > li > a:hover i {
+  transform: rotate(5deg);
+}
+
+.navbar .menu-container > ul > li > ul > li:hover::before {
+  left: 10px;
+  opacity: 1;
+}
+
+.navbar .menu-container > ul > li:hover > ul {
+  max-height: 500px;
+  transform: scaleY(1);
+}
+
+.navbar .menu-container > ul > li:nth-child(1) > a {
+  border-bottom: 3px solid transparent;
+  transition: border-bottom-color 0.3s ease-in-out;
+}
+
+.navbar .menu-container > ul > li:nth-child(1):hover > a {
+  border-bottom-color: var(--menu-accent-color-1);
+}
+
+.navbar .menu-container > ul > li:nth-child(1) > ul > li:hover::before {
+  color: var(--menu-accent-color-1);
+}
+
+.navbar .menu-container > ul > li:nth-child(2) > a {
+  border-bottom: 3px solid transparent;
+  transition: border-bottom-color 0.3s ease-in-out;
+}
+
+.navbar .menu-container > ul > li:nth-child(2):hover > a {
+  border-bottom-color: var(--menu-accent-color-2);
+}
+
+.navbar .menu-container > ul > li:nth-child(2) > ul > li:hover::before {
+  color: var(--menu-accent-color-2);
+}
+
+.navbar .menu-container > ul > li:nth-child(3) > a {
+  border-bottom: 3px solid transparent;
+  transition: border-bottom-color 0.3s ease-in-out;
+}
+
+.navbar .menu-container > ul > li:nth-child(3):hover > a {
+  border-bottom-color: var(--menu-accent-color-3);
+}
+
+.navbar .menu-container > ul > li:nth-child(3) > ul > li:hover::before {
+  color: var(--menu-accent-color-3);
+}
+
+.navbar .menu-container > ul > li:nth-child(4) > a {
+  border-bottom: 3px solid transparent;
+  transition: border-bottom-color 0.3s ease-in-out;
+}
+
+.navbar .menu-container > ul > li:nth-child(4):hover > a {
+  border-bottom-color: var(--menu-accent-color-4);
+}
+
+.navbar .menu-container > ul > li:nth-child(4) > ul > li:hover::before {
+  color: var(--menu-accent-color-4);
+}
+
+.navbar .menu-container > ul > li:nth-child(5) > a {
+  border-bottom: 3px solid transparent;
+  transition: border-bottom-color 0.3s ease-in-out;
+}
+
+.navbar .menu-container > ul > li:nth-child(5):hover > a {
+  border-bottom-color: var(--menu-accent-color-5);
+}
+
+.navbar .menu-container > ul > li:nth-child(5) > ul > li:hover::before {
+  color: var(--menu-accent-color-5);
+}
+
+.navbar .menu-container > ul > li:nth-child(6) > a {
+  border-bottom: 3px solid transparent;
+  transition: border-bottom-color 0.3s ease-in-out;
+}
+
+.navbar .menu-container > ul > li:nth-child(6):hover > a {
+  border-bottom-color: var(--menu-accent-color-6);
+}
+
+.navbar .menu-container > ul > li:nth-child(6) > ul > li:hover::before {
+  color: var(--menu-accent-color-6);
+}
+
+.navbar .menu-container > ul > li:nth-child(7) > a {
+  border-bottom: 3px solid transparent;
+  transition: border-bottom-color 0.3s ease-in-out;
+}
+
+.navbar .menu-container > ul > li:nth-child(7):hover > a {
+  border-bottom-color: var(--menu-accent-color-7);
+}
+
+.navbar .menu-container > ul > li:nth-child(7) > ul > li:hover::before {
+  color: var(--menu-accent-color-7);
+}
+
+.navbar .menu-container > ul > li:nth-child(8) > a {
+  border-bottom: 3px solid transparent;
+  transition: border-bottom-color 0.3s ease-in-out;
+}
+
+.navbar .menu-container > ul > li:nth-child(8):hover > a {
+  border-bottom-color: var(--menu-accent-color-8);
+}
+
+.navbar .menu-container > ul > li:nth-child(8) > ul > li:hover::before {
+  color: var(--menu-accent-color-8);
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- EXTERNAL LIBRARIES - p5.js and MathJAX -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <!-- PERSONAL STYLES and SCRIPTS -->
+  <link rel="stylesheet" href="../resources/css/lecture.css">
+  <script src="../resources/scripts/riemann_integral_animations.js"></script>
+
+  <!-- META TAGS and TITLE -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capitolul 1: Sume Darboux și Riemann. Integrala Riemann</title>
+</head>
+
+<body>
+  <div class="section">
+    <h1>Capitolul 1<br>Sume Darboux și Riemann. Integrala Riemann</h1>
+    <div class="definition-box">      
+      <h2>Partiționarea unui interval</h2>
+      <p>
+        Fie un interval \([a,b]\). O <em>partiționare</em> \(P\) a acestui interval este o mulțime finită de puncte:
+      </p>
+      <div class="math-equation">
+        \[
+          a = x_0 &lt; x_1 &lt; \dots &lt; x_n = b,
+        \]
+      </div>
+      <p>
+        care împarte \([a,b]\) în subintervale adiacente. Pentru o partiționare uniformă:
+      </p>
+      <div class="math-equation">
+        \[
+          x_{i} - x_{i-1} = \frac{b-a}{n} \quad \text{pentru toate valorile } i = 1,\dots,n.
+        \]
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMA DARBOUX INFERIOARĂ -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Suma Darboux Inferioară</h2>
+      <p>
+        Definim <em>suma Darboux inferioară</em> pentru fiecare subinterval 
+        \([x_{i-1}, x_i]\) ca fiind
+      </p>
+      <div class="math-equation">
+        \[
+          L(f,P) = \sum_{i=1}^{n} m_i \,\bigl(x_i - x_{i-1}\bigr), \quad m_i = \inf \{f(x) : x \in [x_{i-1}, x_i]\}.
+        \]
+      </div>
+      <p>
+        Cu alte cuvinte, în fiecare subinterval, luăm valoarea minimă a funcției și construim un dreptunghi cu acea înălțime.
+      </p>
+    </div>
+    <div class="animation-container">
+      <h2>Animație: Suma Darboux Inferioară</h2>
+      <div id="lowerDarbouxCanvas"></div>
+      <div class="animation-controls">
+        <span>Număr subintervale: <span id="lowerDarbouxValue">4</span></span>
+        <span id="lowerDarbouxSliderContainer"></span>
+      </div>
+    </div>
+  </div>
+
+ <!-- SUMA DARBOUX SUPERIOARĂ -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Suma Darboux Superioară</h2>
+      <p>
+        În mod similar, <em>suma Darboux superioară</em> folosește valoarea supremă a funcției pe fiecare subinterval:
+      </p>
+      <div class="math-equation">
+        \[
+          U(f,P) = \sum_{i=1}^{n} M_i \,\bigl(x_i - x_{i-1}\bigr), \quad M_i = \sup \{f(x) : x \in [x_{i-1}, x_i]\}.
+        \]
+      </div>
+      <p>
+        Aici, dreptunghiurile vor avea înălțimea maximă a funcției în subinterval.
+      </p>
+    </div>
+    <div class="animation-container">
+      <h2>Animație: Suma Darboux Superioară</h2>
+      <div id="upperDarbouxCanvas"></div>
+      <div class="animation-controls">
+        <span>Număr subintervale: <span id="upperDarbouxValue">4</span></span>
+        <span id="upperDarbouxSliderContainer"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMA RIEMANN -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Suma Riemann</h2>
+      <p>
+        În definiția <em>sumei Riemann</em>, pentru fiecare subinterval
+        \([x_{i-1}, x_i]\) alegem un punct arbitrar \(\xi_i \in (x_{i-1}, x_i)\).
+        Suma Riemann devine
+      </p>
+      <div class="math-equation">
+        \[
+          S(P, f, \{\xi_i\}) = \sum_{i=1}^n f(\xi_i)\,\bigl(x_i - x_{i-1}\bigr).
+        \]
+      </div>
+      <p>
+        Mai jos, alegem un punct aleator \(\xi_i\) fixat în fiecare subinterval,
+        și putem mări numărul de subintervale
+        pentru a vedea cum se apropie de integrala reală.
+      </p>
+    </div>
+    <div class="animation-container">
+      <h2>Animație: Suma Riemann</h2>
+      <div id="riemannCanvas"></div>
+      <div class="animation-controls">
+        <span>Număr subintervale: <span id="riemannValue">4</span></span>
+        <span id="riemannSliderContainer"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="definition-box">
+      <h2>Integrala Riemann</h2>
+      <p>
+        Integrala Riemann a funcției \(f\) pe intervalul \([a,b]\) se definește ca limita sumei Riemann:
+      <div class="math-equation">
+        \[
+          \int_a^b f(x)\,dx = \lim_{n \to \infty} \sum_{i=1}^n f(\xi_i)(x_i - x_{i-1}),
+        \]
+      </div>
+      </p>
+      <p>
+        unde \(P: a=x_0 &lt; x_1 &lt; \dots &lt; x_n=b\) este o partiționare a intervalului, iar \(\xi_i \in [x_{i-1}, x_i]\) sunt punctele de evaluare, arbitrare, fixate.
+      </p>
+      <p>Pentru o partiționare uniformă avem și:</p>
+      <div class="math-equation">
+        \[
+          x_{i} - x_{i-1} = \frac{b-a}{n} \quad \text{pentru toate valorile } i = 1,\dots,n.
+        \]
+      </div>
+      <p>
+        Dacă limita de mai sus există și este independentă de modul în care sunt alese punctele \(\xi_i\),
+        atunci funcția \(f\) este integrabilă pe \([a,b]\), iar această limită reprezintă integrala Riemann.
+      </p>
+      <p>
+        De asemenea, dacă suma Darboux inferioară \(L(f,P)\) este egală cu suma Darboux superioară \(U(f,P)\),
+        atunci funcția \(f\) este integrabilă pe \([a,b]\).
+      </p>
+    </div>
+  </div>
+</body>
+</html>

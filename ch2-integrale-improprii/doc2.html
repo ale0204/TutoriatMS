@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- EXTERNAL LIBRARIES - p5.js and MathJAX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script id="MathJax-script" async 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <!-- PERSONAL STYLES -->
+    <link rel="stylesheet" href="../resources/css/lecture.css">
+    <!-- <script src="../resources/scripts/improper_integrals_graphs.js"></script> -->
+
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitolul 2: Integrale Improprii - Interval Infinit</title>
+</head>
+
+<body>
+    <div class="nav-links">
+        <a href="./doc1.html">Pagina anterioara</a>
+        <a href="./doc3.html">Urmatoarea pagina</a>
+    </div>
+    <div class="section">
+        <h1>Capitolul 2<br>Integrale Improprii - Interval Infinit</h1>
+
+        <div class="definition-box">
+            <h2>Exemplu: Integrală pe un Interval Infinit</h2>
+            <p>Considerăm integrala improprie:</p>
+            <div class="math-equation">
+                \[
+                \int_1^{\infty} \frac{1}{x^2} \,dx
+                \]
+            </div>
+            <p>Analizăm integrală pe un interval finit:</p>
+            <div class="math-equation">
+                \[
+                \int_1^b \frac{1}{x^2} \,dx
+                \]
+            </div>
+            <p>unde \( b \) este un număr mai mare decât 1.</p>
+        </div>
+
+        <div class="definition-box">
+            <h2>Evaluarea Integralei</h2>
+            <p>Rezolvăm integrală:</p>
+            <div class="math-equation">
+                \[
+                \int_1^b x^{-2} \,dx = \left[ \frac{x^{-1}}{-1} \right]_1^b = \left[ -\frac{1}{x} \right]_1^b
+                \]
+            </div>
+            <div class="math-equation">
+               <p>Luând limita când \( b \to \infty \):</p>
+            <div class="math-equation">
+                \[
+                \lim_{b\to\infty} \left( -\frac{1}{b} + 1 \right) = 0 + 1 = 1
+                \]
+            </div>
+        </div>
+    </div>
+</body>
+</html>

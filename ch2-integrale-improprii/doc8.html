@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- EXTERNAL LIBRARIES - MathJax -->
+    <script id="MathJax-script" async 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <!-- PERSONAL STYLES -->
+    <link rel="stylesheet" href="../resources/css/lecture.css">
+
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitolul 2: Integrala Improprie</title>
+</head>
+
+<body>
+    <div class="nav-links">
+        <a href="./doc7.html">Pagina anterioară</a>
+    </div>
+
+    <div class="section">
+        <h1>Capitolul 2<br>Integrală Improprie - Funcțiile Gamma și Beta</h1>
+
+        <div class="definition-box">
+            <h2>Funcția Gamma</h2>
+            <div class="math-equation">
+                \[
+                \Gamma(z) = \int_0^{\infty} t^{z-1} e^{-t} \,dt, \quad \operatorname{Re}(z) &gt; 0
+                \]
+            </div>
+            <h3>Proprietăți</h3>
+            <ul>
+                <li>\( \Gamma(1) = 1 \)</li>
+                <li>\( \Gamma(z+1) = z \Gamma(z), \quad \operatorname{Re}(z) &gt; 1 \)</li>
+                <li>\( \Gamma(n) = (n-1)! , \quad \forall n \in \mathbb{N} \)</li>
+                <li>\( \Gamma\left(\frac{1}{2}\right) = \sqrt{\pi} \)</li>
+            </ul>
+        </div>
+
+        <div class="definition-box">
+            <h2>Funcția Beta</h2>
+            <div class="math-equation">
+                \[
+                \beta(x, y) = \int_0^1 t^{x-1} (1 - t)^{y-1} \,dt, \quad x &gt; 0, y &gt; 0
+                \]
+            </div>
+            <h3>Proprietăți</h3>
+            <ul>
+                <li>\( \beta(x, y) = \beta(y, x), \quad \forall x, y &gt; 0 \)</li>
+                <li>\( \beta(x, y) = \frac{\Gamma(x) \Gamma(y)}{\Gamma(x + y)}, \quad \forall x, y &gt; 0 \)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="exercise-title">Exerciții propuse</h2>
+
+        <div class="exercise">
+            <h3 class="exercise-title">1. Calculați următoarea integrală:</h3>
+            <div class="math-display">
+                \[
+                I = \int_{-1}^{+\infty} \sqrt{t+1} \cdot e^{-t-1} \,dt
+                \]
+            </div>
+        </div>
+
+        <div class="exercise">
+            <h3 class="exercise-title">2. Calculați următoarea integrală:</h3>
+            <div class="math-display">
+                \[
+                I = \int_{-\infty}^{+\infty} t^6 e^{-t^2} \,dt
+                \]
+            </div>
+        </div>
+
+        <div class="exercise">
+            <h3 class="exercise-title">3. Calculați următoarea integrală:</h3>
+            <div class="math-display">
+                \[
+                I = \int_{0}^{1} \frac{dt}{\sqrt[3]{t^2(1-t)}}
+                \]
+            </div>
+        </div>
+
+        <div class="exercise">
+            <h3 class="exercise-title">4. Calculați următoarea integrală:</h3>
+            <div class="math-display">
+                \[
+                I = \int_{0}^{1} t^8 (1 - t^3) \,dt
+                \]
+            </div>
+        </div>
+        <div class="exercise">
+            <h3 class="exercise-title">5. Calculați următoarea integrală:</h3>
+            <div class="math-display">
+                \[
+                I = \int_{0}^{1} \sqrt{t} \ln^3 t \,dt
+                \]
+            </div>
+        </div>
+        
+        <div class="exercise">
+            <h3 class="exercise-title">6. Calculați integrala Euler-Poisson:</h3>
+            <div class="math-display">
+                \[
+                I = \int_{-\infty}^{\infty} e^{-t^2} \,dt
+                \]
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <title>Integrale de Tip II (Câmp Vectorial)</title>
+  <!-- EXTERNAL LIBRARIES - p5.js and MathJax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <!-- PERSONAL STYLES and SCRIPTS -->
+  <link rel="stylesheet" href="../resources/css/lecture.css">
+  <link rel="stylesheet" href="../resources/css/general.css">
+  <script src="../resources/scripts/integrale-curbilinii/animatie-lucru-mecanic.js"></script>  
+</head>
+<body>
+  <!-- MAIN PAGE HEADING -->
+  <h1>Capitolul 3.2<br>Integrale de Tip II (Câmp Vectorial)</h1>
+  <!-- PLACEHOLDER LINKS FOR NEXT SECTIONS -->
+  <div class="nav-links" style="margin-bottom: 20px;">
+    <a href="./index.html">Lungimea unei curbe. Curbe parametrizate. Integrala Curbilinie</a>
+    <a href="./tip1.html">Tip I - Integrale Curbilinii Peste Câmpuri Scalare</a>
+    <a href="#">Tip II - Integrale Curbilinii Peste Câmpuri Vectoriale</a>
+    <a href="./exercitii.html">Exerciții propuse</a>
+  </div>
+  <main>
+    <!-- THEORY SECTION: Integrale de Tip II -->
+    <div class="definition-box" id="tip2">
+      <h2>Teorie pentru Integrale de Tip II</h2>
+      <p>
+        Fie \(C\) o curbă netedă în \(\mathbb{R}^3\) cu parametrizarea
+        \(\mathbf{r}(t) = (x(t), y(t), z(t))\) pentru \(t \in [a,b]\) și să fie
+        \(\mathbf{F}(x,y,z) = \bigl(P(x,y,z), Q(x,y,z), R(x,y,z)\bigr)\) un câmp vectorial continuu
+        definit pe un domeniu care conține suportul lui \(C\).
+      </p>
+      <p>
+        La fiecare punct \(\mathbf{r}(t)\) de pe \(C\), se definește versorul tangent
+        \(\tau(t)\) ca:
+      </p>
+      <div style="text-align:center;">
+        \[
+          \tau(t) = \frac{\mathbf{r}'(t)}{\|\mathbf{r}'(t)\|}.
+        \]
+      </div>
+      <p>
+        Integrala curbilinie de tip II se definește prin:
+      </p>
+      <div style="text-align:center;">
+        \[
+          \int_C \mathbf{F} \cdot d\mathbf{r} =
+          \int_C \mathbf{F} \cdot \tau\, ds =
+          \int_a^b \Bigl[P(x(t),y(t),z(t))\,x'(t)+ Q(x(t),y(t),z(t))\,y'(t) + R(x(t),y(t),z(t))\,z'(t)\Bigr]\,dt.
+        \]
+      </div>
+      <p>
+        Notă: Dacă se inversează sensul de parcurgere a curbei, integrala își schimbă semnul.
+      </p>
+      <p>
+        <strong>Interpretare fizică:</strong> Integrala reprezintă lucrul mecanic efectuat de forța \(\mathbf{F}\)
+        de-a lungul curbei \(C\).
+      </p>
+      <p>
+        <strong>Exemplu:</strong> Calculați lucrul mecanic al forței
+        \(\mathbf{F}(x,y,z) = (x, -z, y)\) de-a lungul curbei date de:
+      </p>
+      <div style="text-align:center;">
+        \[
+          \begin{cases}
+            x = t,\\[1mm]
+            y = \cos t,\\[1mm]
+            z = \sin t,\\[1mm]
+            t \in \Bigl[0, \frac{\pi}{3}\Bigr].
+          \end{cases}
+        \]
+      </div>
+      <p>
+        Atunci,
+      </p>
+      <div style="text-align:center;">
+        \[
+          L = \int_0^{\pi/3} \Bigl[t + \sin^2t + \cos^2t\Bigr]\,dt =
+          \int_0^{\pi/3} (t + 1)\,dt.
+        \]
+      </div>
+      <p>
+        Rezultatul obținut este:
+      </p>
+      <div style="text-align:center;">
+        \[
+          L = \frac{\pi^2}{18} + \frac{\pi}{3}.
+        \]
+      </div>
+    </div>
+
+    <!-- ANIMATION SECTION: VECTOR FIELD & UNIT TANGENT -->
+    <div class="animation-container">
+      <h2>Animație: Câmp Vectorial & Tangenta Unitară (Lucru Mecanic)</h2>
+      <div id="vectorFieldCanvas"></div>
+      <div class="slider-container">
+        <div id="sliderHolder"></div>
+      </div>
+      <p>
+        În animație, punctul portocaliu de pe curbă poate fi tras sau controlat prin slider.
+        Vectorul roșu reprezintă \(\mathbf{F}\) la acel punct, iar vectorul verde este tangenta
+        unitară la curbă.
+      </p>
+    </div>
+    
+    <!-- (Opțional) Alte secțiuni specifice Tip II pot fi adăugate aici -->
+  </main>
+</body>
+</html>

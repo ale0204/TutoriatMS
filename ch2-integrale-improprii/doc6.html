@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- EXTERNAL LIBRARIES - MathJAX -->
+    <script id="MathJax-script" async 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <!-- PERSONAL STYLES -->
+    <link rel="stylesheet" href="../resources/css/lecture.css">
+
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitolul 2: Integrală Improprie - Funcția <b>arctg</b></title>
+</head>
+
+<body>
+    <div class="nav-links">
+        <a href="./doc5.html">Pagina anterioara</a>
+        <a href="./doc7.html">Urmatoarea pagina</a>
+    </div>
+    <div class="section">
+        <h1>Capitolul 2<br>Integrală Improprie - Funcția <b>arctg</b></h1>
+
+        <div class="definition-box">
+            <h2>Exemplu</h2>
+            <p>Evaluăm următoarea integrală improprie:</p>
+            <div class="math-equation">
+                \[
+                \int_{-\infty}^{\infty} \frac{e^x}{1 + e^{2x}} \,dx
+                \]
+            </div>
+            <p>Folosind proprietatea integralelor improprii:</p>
+            <div class="math-equation">
+                \[
+                \int_{-\infty}^{\infty} f(x) \,dx = \lim_{a \to -\infty} \int_a^0 f(x) \,dx + \lim_{b \to \infty} \int_0^b f(x) \,dx
+                \]
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="definition-box">
+            <h2>Calculul Integralei</h2>
+            <p>Rezolvăm integrală utilizând substituția \( u = e^x \), \( du = e^x dx \), astfel:</p>
+            <div class="math-equation">
+                \[
+                \int_{0}^{\infty} \frac{du}{1 + u^2} = \operatorname{arctg}(u)
+                \]
+            </div>
+            <p>Rescriem rezultatul în termenii lui \( e^x \):</p>
+            <div class="math-equation">
+                \[
+                \operatorname{arctg}(e^x)
+                \]
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="definition-box">
+            <h2>Evaluarea Integralei</h2>
+            <p>Aplicăm limitele definite anterior:</p>
+            <div class="math-equation">
+                \[
+                \lim_{a \to -\infty} \left[ \operatorname{arctg}(e^x) \right]_a^0 + \lim_{b \to \infty} \left[ \operatorname{arctg}(e^x) \right]_0^b
+                \]
+            </div>
+            <p>Descompunem în limite:</p>
+            <div class="math-equation">
+                \[
+                \operatorname{arctg}(e^0) - \operatorname{arctg}(e^a) + \operatorname{arctg}(e^b) - \operatorname{arctg}(e^0)
+                \]
+            </div>
+        </div>
+
+        <div class="definition-box">
+            <h2>Proprietăți și Evaluare Finală</h2>
+            <p>Cunoaștem următoarele valori:</p>
+            <ul>
+                <li>\( \operatorname{arctg}(1) = \frac{\pi}{4} \)</li>
+                <li>\( \operatorname{arctg}(0) = 0 \)</li>
+                <li>\( \operatorname{arctg}(-\infty) = -\frac{\pi}{2} \)</li>
+                <li>\( \operatorname{arctg}(\infty) = \frac{\pi}{2} \)</li>
+            </ul>
+            <p>Rezultatul final:</p>
+            <div class="math-equation">
+                \[
+                \frac{\pi}{4} - 0 + \frac{\pi}{2} - \frac{\pi}{4} = \frac{\pi}{2}
+                \]
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="definition-box">
+            <h2>Concluzie</h2>
+            <p>Deoarece integrala are o valoare finită, aceasta <b>converge</b> la:</p>
+            <div class="math-equation">
+                \[
+                \frac{\pi}{2}
+                \]
+            </div>
+        </div>
+    </div>
+</body>
+</html>
