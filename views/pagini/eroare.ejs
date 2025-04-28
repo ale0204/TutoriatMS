@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <title>Eroare - <%= locals.titlu || "Eroare" %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="eroare, pagina negasita">
+    <meta name="description" content="Pagină de eroare">
+    <meta name="author" content="Neamtu Alexandra">
+    <link rel="icon" type="image/png" href="/resurse/imagini/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .eroare-container {
+            width: 90%;
+            max-width: 800px;
+            display: grid;
+            grid-template-rows: auto auto auto;
+            gap: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .eroare-titlu {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #e74c3c;
+            font-weight: 500;
+        }
+        
+        .eroare-text {
+            font-size: 1.2rem;
+            margin: 10px 0 0;
+            color: #333;
+        }
+        
+        .eroare-imagine {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            border-radius: 8px;
+        }
+        
+        .buton-acasa {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .buton-acasa:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="eroare-container">
+        <!-- Prima secțiune: Titlu și text -->
+        <div>
+            <h1 class="eroare-titlu"><%= locals.titlu || "Eroare" %></h1>
+            <p class="eroare-text"><%= locals.text || "A apărut o eroare!" %></p>
+        </div>
+        
+        <!-- A doua secțiune: Imagine -->
+        <div>
+            <% if (locals.imagine) { %>
+                <img src="<%= locals.imagine.startsWith('/') ? locals.imagine : '/' + locals.imagine %>" alt="Imagine eroare" class="eroare-imagine">
+            <% } %>
+        </div>
+        
+        <!-- A treia secțiune: Buton -->
+        <div>
+            <a href="/" class="buton-acasa">Înapoi la pagina principală</a>
+        </div>
+    </div>
+</body>
+</html>

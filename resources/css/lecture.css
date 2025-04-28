@@ -224,7 +224,7 @@ h1,
     padding-left: var(--spacing-sm);
     padding-bottom: var(--spacing-sm);
 }
-  
+
 /* =========================================
     MEDIA QUERIES
 ========================================= */
@@ -303,4 +303,17 @@ h1,
         font-size: var(--font-size-sm);
     }
 }
-  
+
+/* Aplicare uniformă a fontului Ubuntu pentru toate elementele din paginile de lecții */
+body, h1, h2, h3, h4, h5, h6, p, li, a, span, div, td, th, label, input, button, select, textarea {
+  font-family: "Ubuntu", sans-serif !important;
+}
+
+.section, .definition-box, .animation-container, .math-equation {
+  font-family: "Ubuntu", sans-serif !important;
+}
+
+/* Rămânem la Times New Roman doar pentru elementele matematice specifice unde e necesar */
+.math-function, .math-variable {
+  font-family: 'Times New Roman', serif;
+}

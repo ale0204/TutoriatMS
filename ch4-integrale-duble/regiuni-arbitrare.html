@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <!-- EXTERNAL LIBRARIES - p5.js and MathJax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <!-- PERSONAL STYLES and SCRIPTS -->
+  <!-- Includere CSS cu ambele căi pentru compatibilitate -->
+  <link rel="stylesheet" href="/resurse/css/general.css">
+  <link rel="stylesheet" href="../resources/css/general.css">
+  <link rel="stylesheet" href="/resurse/css/lecture.css">
+  <link rel="stylesheet" href="../resources/css/lecture.css">
+  
+  <!-- CSS și iconițe pentru navbar -->
+  <link rel="stylesheet" href="/resurse/css/nav.css">
+  <link rel="stylesheet" href="/resurse/css/nav700.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Scripturi pentru animațiile integralelor duble - încercăm ambele căi pentru compatibilitate -->
+  <script src="../resources/scripts/double_integrals_arbitrary_region.js"></script>
+  <script src="/resurse/scripts/double_integrals_arbitrary_region.js"></script>
+  
+  <!-- Script embedded pentru a asigura încărcarea animației -->
+  <script>
+    // Asigurăm încărcarea completă a paginii înainte de a iniția canvas-ul P5.js
+    window.onload = function() {
+      // Verificăm dacă elementele necesare există
+      if (document.getElementById('arbitraryRegionCanvas') && 
+          document.getElementById('arbitraryRegionSliderContainer') &&
+          document.getElementById('arbitraryRegionSubdivValue')) {
+        console.log('Elemente pentru animația regiunii arbitrare găsite!');
+      } else {
+        console.error('Lipsesc elemente pentru animația regiunii arbitrare!');
+      }
+    };
+  </script>
+
+  <!-- META TAGS and TITLE -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regiuni Arbitrare - Integrale Duble</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Adăugare header cu navbar -->
+  <header>
+    <h1 class="ubuntu-bold">Tutoriat matematici speciale</h1>
+    <nav class="navbar">
+      <!-- hamburger menu mobil -->
+      <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
+      <label for="hamburger-toggle" class="hamburger-menu">
+        <div class="hamburger-icon">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </div>
+      </label>
+      
+      <div class="menu-container">
+        <ul>
+          <li>
+            <a href="/" class="ubuntu-medium"><i class="fa-solid fa-house"></i> <span class="home-text">Acasă</span></a>
+            <input type="checkbox" id="submenu-toggle-1" class="submenu-toggle">
+            <label for="submenu-toggle-1" class="submenu-label"></label>
+            <ul>
+              <li><a href="#introducere" class="ubuntu-regular"><i class="fa-solid fa-info-circle"></i> Introducere</a></li>
+              <li><a href="#cursuri" class="ubuntu-regular"><i class="fa-solid fa-book"></i> Cursuri disponibile</a></li>
+              <li><a href="#calendar-evenimente" class="ubuntu-regular"><i class="fa-solid fa-calendar"></i> Calendar evenimente</a></li>
+              <li><a href="#anunturi" class="ubuntu-regular"><i class="fa-solid fa-bullhorn"></i> Anunțuri</a></li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="/ch1-integrala-riemann/Integrala-Riemann" class="ubuntu-regular"><i class="fa-solid fa-calculator"></i> Integrala Riemann</a>
+          </li>
+          
+          <li>
+            <a href="/ch2-integrale-improprii/doc1" class="ubuntu-regular"><i class="fa-solid fa-infinity"></i> Integrale Improprii</a>
+          </li>
+          
+          <li class="has-submenu">
+            <input type="checkbox" id="submenu-toggle-4" class="submenu-toggle">
+            <a href="/ch3-integrale-curbilinii/index" class="ubuntu-regular"><i class="fa-solid fa-route"></i> Integrale Curbilinii</a>
+            <ul>
+              <li><a href="/ch3-integrale-curbilinii/tip1" class="ubuntu-regular"><i class="fa-solid fa-wave-square"></i> Tip I - Câmpuri Scalare</a></li>
+              <li><a href="/ch3-integrale-curbilinii/tip2" class="ubuntu-regular"><i class="fa-solid fa-vector-square"></i> Tip II - Câmpuri Vectoriale</a></li>
+              <li><a href="/ch3-integrale-curbilinii/exercitii" class="ubuntu-regular"><i class="fa-solid fa-tasks"></i> Exerciții propuse</a></li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="/ch4-integrale-duble/index" class="ubuntu-regular"><i class="fa-solid fa-square"></i> Integrale Duble</a>
+          </li>
+          
+          <li>
+            <a href="#" class="ubuntu-regular"><i class="fa-solid fa-arrows-alt"></i> Câmpuri Vectoriale</a>
+          </li>
+          
+          <li class="has-submenu">
+            <input type="checkbox" id="submenu-toggle-7" class="submenu-toggle">
+            <a href="#" class="ubuntu-medium"><i class="fa-solid fa-folder-open"></i> Materiale</a>
+            <ul>
+              <li><a href="/materiale/cursuri" class="ubuntu-regular"><i class="fa-solid fa-file-pdf"></i> Cursuri PDF</a></li>
+              <li><a href="/materiale/exercitii" class="ubuntu-regular"><i class="fa-solid fa-pencil-alt"></i> Exerciții propuse</a></li>
+              <li><a href="/materiale/solutii" class="ubuntu-regular"><i class="fa-solid fa-check"></i> Soluții exerciții</a></li>
+              <li><a href="/materiale/examene" class="ubuntu-regular"><i class="fa-solid fa-clipboard-list"></i> Modele de examen</a></li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="/contact" class="ubuntu-regular"><i class="fa-solid fa-envelope"></i> Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN PAGE HEADING -->
+  <div class="section">
+    <h1>Regiuni Arbitrare în Integrale Duble</h1>
+
+    <!-- NAVIGATION LINKS -->
+    <div class="nav-links" style="margin-bottom: 20px;">
+      <a href="./index.html">Integrale Duble - Concepte de bază</a>
+      <a href="./tipI.html">Regiuni de Tip I</a>
+      <a href="./tipII.html">Regiuni de Tip II</a>
+      <a href="./regiuni-arbitrare.html">Regiuni Arbitrare</a>
+      <a href="./exercitii.html">Exerciții propuse</a>
+    </div>
+
+    <!-- Explicație Regiuni Arbitrare -->
+    <div class="definition-box">
+      <h2>Integrarea pe Regiuni Arbitrare</h2>
+      <p>
+        În situații practice, întâlnim adesea domenii de integrare cu forme complexe, care nu pot fi descrise simplu ca regiuni de tip I sau tip II. Pentru astfel de regiuni arbitrare, avem mai multe strategii:
+      </p>
+      <ul>
+        <li><strong>Descompunerea în subregiuni</strong> - împărțim regiunea în subregiuni mai simple de tip I sau tip II</li>
+        <li><strong>Schimbarea de variabile</strong> - transformăm regiunea într-una mai simplă printr-o transformare de coordonate</li>
+        <li><strong>Coordonate speciale</strong> - folosim coordonate polare, cilindrice, sferice etc. pentru regiuni cu simetrie specială</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DESCOMPUNEREA ÎN SUBREGIUNI -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Descompunerea în Subregiuni</h2>
+      <p>
+        Proprietatea de aditivitate a integralei duble ne permite să scriem:
+      </p>
+      <div class="math-equation">
+        \[
+          \iint_{D_1 \cup D_2} f(x,y) \, dA = \iint_{D_1} f(x,y) \, dA + \iint_{D_2} f(x,y) \, dA
+        \]
+      </div>
+      <p>
+        unde \(D_1\) și \(D_2\) sunt subregiuni ce nu se suprapun (\(D_1 \cap D_2\) are măsură zero).
+      </p>
+      <p>
+        Folosind această proprietate, putem descompune o regiune complexă în mai multe subregiuni simple de tip I și/sau tip II, iar apoi să calculăm integrala pe fiecare subregiune în parte.
+      </p>
+    </div>
+  </div>
+
+  <!-- SCHIMBAREA DE VARIABILE -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Schimbarea de Variabile în Integrala Dublă</h2>
+      <p>
+        Pentru o transformare \(T: (u,v) \mapsto (x,y)\) dată de \(x = x(u,v)\) și \(y = y(u,v)\), integrala dublă devine:
+      </p>
+      <div class="math-equation">
+        \[
+          \iint_D f(x,y) \, dx\,dy = \iint_R f\big(x(u,v), y(u,v)\big) \left| \frac{\partial(x,y)}{\partial(u,v)} \right| \, du\,dv
+        \]
+      </div>
+      <p>
+        unde \(\left| \frac{\partial(x,y)}{\partial(u,v)} \right|\) este valoarea absolută a determinantului jacobian:
+      </p>
+      <div class="math-equation">
+        \[
+          \left| \frac{\partial(x,y)}{\partial(u,v)} \right| = \left| \begin{vmatrix} 
+            \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+            \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+          \end{vmatrix} \right| = \left| \frac{\partial x}{\partial u}\frac{\partial y}{\partial v} - \frac{\partial x}{\partial v}\frac{\partial y}{\partial u} \right|
+        \]
+      </div>
+    </div>
+  </div>
+
+  <!-- COORDONATE POLARE -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Coordonate Polare</h2>
+      <p>
+        Un caz special de schimbare de variabile este trecerea la coordonate polare:
+      </p>
+      <div class="math-equation">
+        \[ 
+          x = r\cos\theta, \quad y = r\sin\theta, \quad r \geq 0, \quad 0 \leq \theta < 2\pi 
+        \]
+      </div>
+      <p>
+        Jacobianul acestei transformări este \(r\), astfel încât:
+      </p>
+      <div class="math-equation">
+        \[ 
+          \iint_D f(x,y) \, dx\,dy = \iint_R f(r\cos\theta, r\sin\theta) \, r \, dr\,d\theta 
+        \]
+      </div>
+      <p>
+        Coordonatele polare sunt deosebit de utile pentru regiuni cu simetrie radială, cum ar fi discuri, coroane circulare și sectoare de cerc.
+      </p>
+    </div>
+  </div>
+
+  <!-- VIZUALIZARE REGIUNE ARBITRARĂ -->
+  <div class="section">
+    <div class="animation-container">
+      <h2>Vizualizare: Regiune Arbitrară</h2>
+      <div id="arbitraryRegionCanvas"></div>
+      <div class="animation-controls">
+        <span>Subdiviziuni: <span id="arbitraryRegionSubdivValue">15</span></span>
+        <span id="arbitraryRegionSliderContainer"></span>
+      </div>
+      <p>
+        Animația ilustrează o regiune arbitrară și abordarea de integrare pentru aceasta. Observați cum regiunea este acoperită cu o rețea de dreptunghiuri mici pentru aproximarea integralei duble.
+      </p>
+    </div>
+  </div>
+
+  <!-- Exemplu de calcul -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Exemplu: Calculul integralei pe o regiune circulară</h2>
+      <p>
+        Să calculăm \(\iint_D xy \, dA\) unde \(D\) este discul de rază 2 centrat în origine: \(x^2 + y^2 \leq 4\).
+      </p>
+      <p>
+        Această regiune are simetrie radială, deci vom folosi coordonate polare:
+      </p>
+      <p>
+        \(x = r\cos\theta\), \(y = r\sin\theta\), \(0 \leq r \leq 2\), \(0 \leq \theta < 2\pi\)
+      </p>
+      <div class="math-equation">
+        \[
+          \begin{align}
+            \iint_D xy \, dA &= \int_0^{2\pi} \int_0^2 (r\cos\theta)(r\sin\theta) \, r \, dr\,d\theta \\
+            &= \int_0^{2\pi} \int_0^2 r^3 \cos\theta \sin\theta \, dr\,d\theta \\
+            &= \int_0^{2\pi} \cos\theta \sin\theta \, d\theta \int_0^2 r^3 \, dr \\
+            &= \int_0^{2\pi} \cos\theta \sin\theta \, d\theta \cdot \left[ \frac{r^4}{4} \right]_0^2 \\
+            &= \int_0^{2\pi} \cos\theta \sin\theta \, d\theta \cdot \frac{16}{4} \\
+            &= 4 \int_0^{2\pi} \cos\theta \sin\theta \, d\theta \\
+            &= 4 \int_0^{2\pi} \frac{1}{2}\sin(2\theta) \, d\theta \\
+            &= 2 \left[ -\frac{1}{2}\cos(2\theta) \right]_0^{2\pi} \\
+            &= 2 \left[ -\frac{1}{2}\cos(4\pi) + \frac{1}{2}\cos(0) \right] \\
+            &= 2 \left[ -\frac{1}{2} + \frac{1}{2} \right] \\
+            &= 0
+          \end{align}
+        \]
+      </div>
+      <p>
+        Rezultatul este 0, ceea ce are sens din considerente de simetrie: pentru fiecare punct \((x,y)\) din disc, există punctul \((x,-y)\) care contribuie cu valoarea opusă.
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>

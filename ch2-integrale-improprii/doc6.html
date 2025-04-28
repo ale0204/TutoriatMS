@@ -8,15 +8,108 @@
     </script>
 
     <!-- PERSONAL STYLES -->
+    <link rel="stylesheet" href="/resurse/css/general.css">
+    <link rel="stylesheet" href="../resources/css/general.css">
+    <link rel="stylesheet" href="/resurse/css/lecture.css">
     <link rel="stylesheet" href="../resources/css/lecture.css">
+    
+    <!-- CSS și iconițe pentru navbar -->
+    <link rel="stylesheet" href="/resurse/css/nav.css">
+    <link rel="stylesheet" href="/resurse/css/nav700.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Font Ubuntu -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <!-- META TAGS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capitolul 2: Integrală Improprie - Funcția <b>arctg</b></title>
+    <title>Capitolul 2: Integrală Improprie - Funcția arctg</title>
 </head>
 
 <body>
+    <!-- Header cu navbar -->
+    <header>
+        <h1 class="ubuntu-bold">Tutoriat matematici speciale</h1>
+        <nav class="navbar">
+            <!-- hamburger menu mobil -->
+            <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
+            <label for="hamburger-toggle" class="hamburger-menu">
+                <div class="hamburger-icon">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </div>
+            </label>
+            
+            <div class="menu-container">
+                <ul>
+                    <li>
+                        <a href="/" class="ubuntu-medium"><i class="fa-solid fa-house"></i> <span class="home-text">Acasă</span></a>
+                        <input type="checkbox" id="submenu-toggle-1" class="submenu-toggle">
+                        <label for="submenu-toggle-1" class="submenu-label"></label>
+                        <ul>
+                            <li><a href="/#introducere" class="ubuntu-regular"><i class="fa-solid fa-info-circle"></i> Introducere</a></li>
+                            <li><a href="/#cursuri" class="ubuntu-regular"><i class="fa-solid fa-book"></i> Cursuri disponibile</a></li>
+                            <li><a href="/#calendar-evenimente" class="ubuntu-regular"><i class="fa-solid fa-calendar"></i> Calendar evenimente</a></li>
+                            <li><a href="/#anunturi" class="ubuntu-regular"><i class="fa-solid fa-bullhorn"></i> Anunțuri</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="/ch1-integrala-riemann/Integrala-Riemann" class="ubuntu-regular"><i class="fa-solid fa-calculator"></i> Integrala Riemann</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/ch2-integrale-improprii/doc1" class="ubuntu-regular"><i class="fa-solid fa-infinity"></i> Integrale Improprii</a>
+                    </li>
+                    
+                    <li class="has-submenu">
+                        <input type="checkbox" id="submenu-toggle-4" class="submenu-toggle">
+                        <a href="/ch3-integrale-curbilinii/index" class="ubuntu-regular"><i class="fa-solid fa-route"></i> Integrale Curbilinii</a>
+                        <ul>
+                            <li><a href="/ch3-integrale-curbilinii/tip1" class="ubuntu-regular"><i class="fa-solid fa-wave-square"></i> Tip I - Câmpuri Scalare</a></li>
+                            <li><a href="/ch3-integrale-curbilinii/tip2" class="ubuntu-regular"><i class="fa-solid fa-vector-square"></i> Tip II - Câmpuri Vectoriale</a></li>
+                            <li><a href="/ch3-integrale-curbilinii/exercitii" class="ubuntu-regular"><i class="fa-solid fa-tasks"></i> Exerciții propuse</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="has-submenu">
+                        <input type="checkbox" id="submenu-toggle-5" class="submenu-toggle">
+                        <a href="/ch4-integrale-duble/index" class="ubuntu-regular"><i class="fa-solid fa-square"></i> Integrale Duble</a>
+                        <ul>
+                            <li><a href="/ch4-integrale-duble/tipI" class="ubuntu-regular"><i class="fa-solid fa-table-columns"></i> Regiuni de Tip I</a></li>
+                            <li><a href="/ch4-integrale-duble/tipII" class="ubuntu-regular"><i class="fa-solid fa-grip-lines-vertical"></i> Regiuni de Tip II</a></li>
+                            <li><a href="/ch4-integrale-duble/regiuni-arbitrare" class="ubuntu-regular"><i class="fa-solid fa-draw-polygon"></i> Regiuni Arbitrare</a></li>
+                            <li><a href="/ch4-integrale-duble/exercitii" class="ubuntu-regular"><i class="fa-solid fa-tasks"></i> Exerciții propuse</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="#" class="ubuntu-regular"><i class="fa-solid fa-arrows-alt"></i> Câmpuri Vectoriale</a>
+                    </li>
+                    
+                    <li class="has-submenu">
+                        <input type="checkbox" id="submenu-toggle-7" class="submenu-toggle">
+                        <a href="#" class="ubuntu-medium"><i class="fa-solid fa-folder-open"></i> Materiale</a>
+                        <ul>
+                            <li><a href="/materiale/cursuri" class="ubuntu-regular"><i class="fa-solid fa-file-pdf"></i> Cursuri PDF</a></li>
+                            <li><a href="/materiale/exercitii" class="ubuntu-regular"><i class="fa-solid fa-pencil-alt"></i> Exerciții propuse</a></li>
+                            <li><a href="/materiale/solutii" class="ubuntu-regular"><i class="fa-solid fa-check"></i> Soluții exerciții</a></li>
+                            <li><a href="/materiale/examene" class="ubuntu-regular"><i class="fa-solid fa-clipboard-list"></i> Modele de examen</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="/contact" class="ubuntu-regular"><i class="fa-solid fa-envelope"></i> Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
     <div class="nav-links">
         <a href="./doc5.html">Pagina anterioara</a>
         <a href="./doc7.html">Urmatoarea pagina</a>

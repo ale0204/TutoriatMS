@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <!-- EXTERNAL LIBRARIES - MathJAX -->
+    <!-- EXTERNAL LIBRARIES - MathJax -->
     <script id="MathJax-script" async 
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
@@ -26,7 +26,7 @@
     <!-- META TAGS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capitolul 2: Convergență și Divergență</title>
+    <title>Capitolul 2: Integrale Improprii - Exerciții propuse</title>
 </head>
 
 <body>
@@ -62,8 +62,12 @@
                         <a href="/ch1-integrala-riemann/Integrala-Riemann" class="ubuntu-regular"><i class="fa-solid fa-calculator"></i> Integrala Riemann</a>
                     </li>
                     
-                    <li>
+                    <li class="has-submenu">
+                        <input type="checkbox" id="submenu-toggle-3" class="submenu-toggle">
                         <a href="/ch2-integrale-improprii/doc1" class="ubuntu-regular"><i class="fa-solid fa-infinity"></i> Integrale Improprii</a>
+                        <ul>
+                            <li><a href="/ch2-integrale-improprii/doc9" class="ubuntu-regular"><i class="fa-solid fa-tasks"></i> Exerciții propuse</a></li>
+                        </ul>
                     </li>
                     
                     <li class="has-submenu">
@@ -111,78 +115,68 @@
     </header>
 
     <div class="nav-links">
-        <a href="./doc2.html">Pagina anterioara</a>
-        <a href="./doc4.html">Urmatoarea pagina</a>
-    </div>
-    <div class="section">
-        <h1>Capitolul 2<br>Convergență și Divergență a Integralei Improprii</h1>
-
-        <div class="definition-box">
-            <h2>Criteriul de Convergență</h2>
-            <p>Integralele improprii sunt evaluate folosind limite. O integrală este:</p>
-            <ul>
-                <li><b>Convergentă</b> dacă limita există.</li>
-                <li><b>Divergentă</b> dacă limita <b>nu există</b>.</li>
-            </ul>
-            <p>Forma generală:</p>
-            <div class="math-equation">
-                \[
-                \int_a^{\infty} f(x) \,dx = \lim_{b \to \infty} \int_a^b f(x) \,dx
-                \]
-            </div>
-            <div class="math-equation">
-                \[
-                \int_{-\infty}^{b} f(x) \,dx = \lim_{a \to -\infty} \int_a^b f(x) \,dx
-                \]
-            </div>
-        </div>
+        <a href="./doc8.html">Pagina anterioară</a>
     </div>
 
     <div class="section">
-        <div class="definition-box">
-            <h2>Exemplu de Integrală Improprie</h2>
-            <h3>Integrală studiată:</h3>
-            <div class="math-equation">
-                \[
-                \int_1^{\infty} \frac{3}{x} \,dx
-                \]
-            </div>
-            <p>Calculăm:</p>
-            <div class="math-equation">
-                \[
-                \lim_{b \to \infty} \int_1^b \frac{3}{x} \,dx
-                \]
-            </div>
-            <p>Integrala funcției \( \frac{3}{x} \) este:</p>
-            <div class="math-equation">
-                \[
-                \lim_{b \to \infty} \left[ 3 \ln |x| \right]_1^b
-                \]
-            </div>
-        </div>
+        <h1>Capitolul 2<br>Integrale Improprii - Exerciții propuse</h1>
 
-        <div class="definition-box">
-            <h2>Evaluarea Limitelor</h2>
-            <p>Dezvoltăm expresia:</p>
-            <div class="math-equation">
-                \[
-                \lim_{b \to \infty} \left[ 3 (\ln b - \ln 1) \right]
-                \]
+        <div class="section">
+            <div class="exercise">
+                <h3 class="exercise-title">1. Calculați următoarea integrală:</h3>
+                <div class="math-display">
+                    \[
+                    I = \int_{-1}^{+\infty} \sqrt{t+1} \cdot e^{-t-1} \,dt
+                    \]
+                </div>
             </div>
-            <p>Deoarece \( \ln 1 = 0 \), obținem:</p>
-            <div class="math-equation">
-                \[
-                \lim_{b \to \infty} 3 \ln b = \infty
-                \]
+
+            <div class="exercise">
+                <h3 class="exercise-title">2. Calculați următoarea integrală:</h3>
+                <div class="math-display">
+                    \[
+                    I = \int_{-\infty}^{+\infty} t^6 e^{-t^2} \,dt
+                    \]
+                </div>
+            </div>
+
+            <div class="exercise">
+                <h3 class="exercise-title">3. Calculați următoarea integrală:</h3>
+                <div class="math-display">
+                    \[
+                    I = \int_{0}^{1} \frac{dt}{\sqrt[3]{t^2(1-t)}}
+                    \]
+                </div>
+            </div>
+
+            <div class="exercise">
+                <h3 class="exercise-title">4. Calculați următoarea integrală:</h3>
+                <div class="math-display">
+                    \[
+                    I = \int_{0}^{1} t^8 (1 - t^3) \,dt
+                    \]
+                </div>
+            </div>
+
+            <div class="exercise">
+                <h3 class="exercise-title">5. Calculați următoarea integrală:</h3>
+                <div class="math-display">
+                    \[
+                    I = \int_{0}^{1} \sqrt{t} \ln^3 t \,dt
+                    \]
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h3 class="exercise-title">6. Calculați integrala Euler-Poisson:</h3>
+                <div class="math-display">
+                    \[
+                    I = \int_{-\infty}^{\infty} e^{-t^2} \,dt
+                    \]
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="section">
-        <div class="definition-box">
-            <h2>Concluzie</h2>
-            <p>Deoarece limita duce la infinit, integrala este <b>divergentă</b>.</p>
-        </div>
-    </div>
 </body>
 </html>

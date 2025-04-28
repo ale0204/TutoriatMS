@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <!-- EXTERNAL LIBRARIES - p5.js and MathJax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <!-- PERSONAL STYLES and SCRIPTS -->
+  <!-- Includere CSS cu ambele căi pentru compatibilitate -->
+  <link rel="stylesheet" href="/resurse/css/general.css">
+  <link rel="stylesheet" href="../resources/css/general.css">
+  <link rel="stylesheet" href="/resurse/css/lecture.css">
+  <link rel="stylesheet" href="../resources/css/lecture.css">
+  
+  <!-- CSS și iconițe pentru navbar -->
+  <link rel="stylesheet" href="/resurse/css/nav.css">
+  <link rel="stylesheet" href="/resurse/css/nav700.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Script pentru animația regiunii de Tip II -->
+  <script src="/resurse/scripts/double_integrals_typeII_region.js"></script>
+  <script src="../resources/scripts/double_integrals_typeII_region.js"></script>
+
+  <!-- META TAGS and TITLE -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regiuni de Tip II - Integrale Duble</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Adăugare header cu navbar -->
+  <header>
+    <h1 class="ubuntu-bold">Tutoriat matematici speciale</h1>
+    <nav class="navbar">
+      <!-- hamburger menu mobil -->
+      <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
+      <label for="hamburger-toggle" class="hamburger-menu">
+        <div class="hamburger-icon">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </div>
+      </label>
+      
+      <div class="menu-container">
+        <ul>
+          <li>
+            <a href="/" class="ubuntu-medium"><i class="fa-solid fa-house"></i> <span class="home-text">Acasă</span></a>
+            <input type="checkbox" id="submenu-toggle-1" class="submenu-toggle">
+            <label for="submenu-toggle-1" class="submenu-label"></label>
+            <ul>
+              <li><a href="#introducere" class="ubuntu-regular"><i class="fa-solid fa-info-circle"></i> Introducere</a></li>
+              <li><a href="#cursuri" class="ubuntu-regular"><i class="fa-solid fa-book"></i> Cursuri disponibile</a></li>
+              <li><a href="#calendar-evenimente" class="ubuntu-regular"><i class="fa-solid fa-calendar"></i> Calendar evenimente</a></li>
+              <li><a href="#anunturi" class="ubuntu-regular"><i class="fa-solid fa-bullhorn"></i> Anunțuri</a></li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="/ch1-integrala-riemann/Integrala-Riemann" class="ubuntu-regular"><i class="fa-solid fa-calculator"></i> Integrala Riemann</a>
+          </li>
+          
+          <li class="has-submenu">
+            <input type="checkbox" id="submenu-toggle-3" class="submenu-toggle">
+            <a href="/ch2-integrale-improprii/doc1" class="ubuntu-regular"><i class="fa-solid fa-infinity"></i> Integrale Improprii</a>
+            <ul>
+              <li><a href="/ch2-integrale-improprii/doc9" class="ubuntu-regular"><i class="fa-solid fa-tasks"></i> Exerciții propuse</a></li>
+            </ul>
+          </li>
+          
+          <li class="has-submenu">
+            <input type="checkbox" id="submenu-toggle-4" class="submenu-toggle">
+            <a href="/ch3-integrale-curbilinii/index" class="ubuntu-regular"><i class="fa-solid fa-route"></i> Integrale Curbilinii</a>
+            <ul>
+              <li><a href="/ch3-integrale-curbilinii/tip1" class="ubuntu-regular"><i class="fa-solid fa-wave-square"></i> Tip I - Câmpuri Scalare</a></li>
+              <li><a href="/ch3-integrale-curbilinii/tip2" class="ubuntu-regular"><i class="fa-solid fa-vector-square"></i> Tip II - Câmpuri Vectoriale</a></li>
+              <li><a href="/ch3-integrale-curbilinii/exercitii" class="ubuntu-regular"><i class="fa-solid fa-tasks"></i> Exerciții propuse</a></li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="/ch4-integrale-duble/index" class="ubuntu-regular"><i class="fa-solid fa-square"></i> Integrale Duble</a>
+          </li>
+          
+          <li>
+            <a href="#" class="ubuntu-regular"><i class="fa-solid fa-arrows-alt"></i> Câmpuri Vectoriale</a>
+          </li>
+          
+          <li class="has-submenu">
+            <input type="checkbox" id="submenu-toggle-7" class="submenu-toggle">
+            <a href="#" class="ubuntu-medium"><i class="fa-solid fa-folder-open"></i> Materiale</a>
+            <ul>
+              <li><a href="/materiale/cursuri" class="ubuntu-regular"><i class="fa-solid fa-file-pdf"></i> Cursuri PDF</a></li>
+              <li><a href="/materiale/exercitii" class="ubuntu-regular"><i class="fa-solid fa-pencil-alt"></i> Exerciții propuse</a></li>
+              <li><a href="/materiale/solutii" class="ubuntu-regular"><i class="fa-solid fa-check"></i> Soluții exerciții</a></li>
+              <li><a href="/materiale/examene" class="ubuntu-regular"><i class="fa-solid fa-clipboard-list"></i> Modele de examen</a></li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="/contact" class="ubuntu-regular"><i class="fa-solid fa-envelope"></i> Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN PAGE HEADING -->
+  <div class="section">
+    <h1>Regiuni de Tip II în Integrale Duble</h1>
+
+    <!-- NAVIGATION LINKS -->
+    <div class="nav-links" style="margin-bottom: 20px;">
+      <a href="./index.html">Integrale Duble - Concepte de bază</a>
+      <a href="./tipI.html">Regiuni de Tip I</a>
+      <a href="./tipII.html">Regiuni de Tip II</a>
+      <a href="./regiuni-arbitrare.html">Regiuni Arbitrare</a>
+      <a href="./exercitii.html">Exerciții propuse</a>
+    </div>
+
+    <!-- Explicație Regiuni de Tip II -->
+    <div class="definition-box">
+      <h2>Definiția Regiunii de Tip II</h2>
+      <p>
+        O <em>regiune de tip II</em> (denumită și "regiune definită orizontal") este o regiune \(D\) din planul \(xOy\) care poate fi descrisă sub forma:
+      </p>
+      <div class="math-equation">
+        \[
+          D = \{(x,y) \in \mathbb{R}^2 \mid c \leq y \leq d, \, g_1(y) \leq x \leq g_2(y) \}
+        \]
+      </div>
+      <p>
+        unde:
+      </p>
+      <ul>
+        <li>\(c\) și \(d\) sunt constante reale cu \(c < d\)</li>
+        <li>\(g_1(y)\) și \(g_2(y)\) sunt funcții continue pe intervalul \([c,d]\)</li>
+        <li>\(g_1(y) \leq g_2(y)\) pentru orice \(y \in [c,d]\)</li>
+      </ul>
+      <p>
+        Cu alte cuvinte, o regiune de tip II este mărginită jos și sus de liniile orizontale \(y = c\) și \(y = d\), iar în partea stângă și dreaptă de graficele funcțiilor \(x = g_1(y)\) și \(x = g_2(y)\).
+      </p>
+    </div>
+  </div>
+
+  <!-- Calculul integralei duble pe regiune de Tip II -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Calculul integralei duble pe regiuni de Tip II</h2>
+      <p>
+        Pentru a calcula integrala dublă a unei funcții \(f(x,y)\) pe o regiune de tip II, folosim formula:
+      </p>
+      <div class="math-equation">
+        \[
+          \iint_D f(x,y) \, dA = \int_c^d \int_{g_1(y)}^{g_2(y)} f(x,y) \, dx \, dy
+        \]
+      </div>
+      <p>
+        Observați că integrăm mai întâi în raport cu \(x\), considerând \(y\) constant, și apoi în raport cu \(y\). Ordinea integrării este importantă pentru regiunile de tip II.
+      </p>
+    </div>
+  </div>
+
+  <!-- TYPE II REGION VISUALIZATION -->
+  <div class="section">
+    <div class="animation-container">
+      <h2>Vizualizare: Regiuni de Tip II</h2>
+      <div id="typeIIRegionCanvas"></div>
+      <div class="animation-controls">
+        <span>Subdiviziuni: <span id="typeIISubdivValue">10</span></span>
+        <span id="typeIISliderContainer"></span>
+      </div>
+      <p>
+        Animația de mai sus ilustrează modul în care o regiune de tip II este împărțită în dreptunghiuri orizontale pentru aproximarea integralei duble. Această subdivizare corespunde integrării mai întâi în raport cu \(x\) și apoi în raport cu \(y\). Observați:
+      </p>
+      <ul>
+        <li>Curbele de contur (graficele funcțiilor \(g_1(y)\) și \(g_2(y)\)) sunt reprezentate cu mov</li>
+        <li>Dreptunghiurile de aproximare folosind regula punctului mijloc sunt reprezentate în portocaliu transparent</li>
+        <li>Limitele exterioare (orizontale) în \(y = c\) și \(y = d\) sunt reprezentate cu maro gros</li>
+        <li>Limitele interioare (orizontale) sunt reprezentate cu maro subțire</li>
+      </ul>
+      <p>
+        Puteți modifica numărul de subdiviziuni folosind cursorul pentru a vizualiza cum se îmbunătățește aproximarea integralei pe măsură ce crește numărul de dreptunghiuri.
+      </p>
+    </div>
+  </div>
+
+  <!-- Exemplu de calcul al integralei duble pe regiune de Tip II -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Exemplu: Calculul integralei duble pe o regiune de Tip II</h2>
+      <p>
+        Să calculăm integrala \(\iint_D (xy + \sin y) \, dA\) pe regiunea \(D\) definită de:
+      </p>
+      <p>
+        \(D = \{(x,y) \in \mathbb{R}^2 \mid 0 \leq y \leq \pi, \, 0 \leq x \leq y^2 \}\)
+      </p>
+      <div class="math-equation">
+        \[
+          \begin{align}
+            \iint_D (xy + \sin y) \, dA &= \int_0^{\pi} \int_{0}^{y^2} (xy + \sin y) \, dx \, dy \\
+            &= \int_0^{\pi} \left[ \frac{x^2y}{2} + x\sin y \right]_{x=0}^{x=y^2} \, dy \\
+            &= \int_0^{\pi} \left[ \frac{(y^2)^2y}{2} + y^2\sin y - 0 \right] \, dy \\
+            &= \int_0^{\pi} \left[ \frac{y^5}{2} + y^2\sin y \right] \, dy \\
+            &= \left[ \frac{y^6}{12} - y^2\cos y + 2y\cos y + 2\sin y \right]_0^{\pi} \\
+            &= \left[ \frac{\pi^6}{12} - \pi^2\cos \pi + 2\pi\cos \pi + 2\sin \pi \right] - \left[ 0 - 0 + 0 + 0 \right] \\
+            &= \frac{\pi^6}{12} - \pi^2(-1) + 2\pi(-1) + 2(0) \\
+            &= \frac{\pi^6}{12} + \pi^2 - 2\pi \\
+          \end{align}
+        \]
+      </div>
+    </div>
+  </div>
+
+  <!-- Când este util să alegem regiuni de Tip II -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Când să alegem regiuni de Tip II</h2>
+      <p>
+        Este recomandabil să abordăm o problemă folosind regiuni de tip II când:
+      </p>
+      <ul>
+        <li>Limitele în raport cu \(x\) pot fi exprimate ușor ca funcții de \(y\)</li>
+        <li>Regiunea este mai ușor de descris prin secțiuni orizontale</li>
+        <li>Funcțiile \(g_1(y)\) și \(g_2(y)\) sunt ușor de determinat și integrat</li>
+      </ul>
+      <p>
+        În practică, putem alege între reprezentarea de tip I sau tip II, în funcție de forma regiunii și de funcția care trebuie integrată. Pentru unele regiuni, o reprezentare poate simplifica calculele semnificativ față de cealaltă.
+      </p>
+    </div>
+  </div>
+
+  <!-- Comparație între regiunile de Tip I și Tip II -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Comparație între regiunile de Tip I și Tip II</h2>
+      <p>
+        Tabelul de mai jos rezumă principalele diferențe și caracteristici ale celor două tipuri de regiuni:
+      </p>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Caracteristici</th>
+            <th>Regiuni de Tip I</th>
+            <th>Regiuni de Tip II</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Definire</td>
+            <td>\(a \leq x \leq b, \, f_1(x) \leq y \leq f_2(x)\)</td>
+            <td>\(c \leq y \leq d, \, g_1(y) \leq x \leq g_2(y)\)</td>
+          </tr>
+          <tr>
+            <td>Reprezentare grafică</td>
+            <td>Secțiuni verticale</td>
+            <td>Secțiuni orizontale</td>
+          </tr>
+          <tr>
+            <td>Ordine de integrare</td>
+            <td>\(\int_a^b \int_{f_1(x)}^{f_2(x)} f(x,y) \, dy \, dx\)</td>
+            <td>\(\int_c^d \int_{g_1(y)}^{g_2(y)} f(x,y) \, dx \, dy\)</td>
+          </tr>
+          <tr>
+            <td>Limite</td>
+            <td>Limite verticale constante, limite orizontale variabile</td>
+            <td>Limite orizontale constante, limite verticale variabile</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Pentru unele probleme, poate fi necesar să împărțim regiunea de integrare în subregiuni de tip I sau de tip II pentru a facilita calculul integralelor duble.
+      </p>
+    </div>
+  </div>
+
+  <!-- Script pentru animația regiunii de Tip II -->
+  <script>
+    /***************************************************************
+     * Example: Type II Region using Midpoint Rule for Rectangles
+     * y in [yMin, yMax],  x in [g1(y), g2(y)]
+     * ------------------------------------------------------------
+     * - Boundary curves are drawn in purple.
+     * - Rectangles are drawn using the midpoint rule in semi-transparent orange.
+     * - All horizontal lines (subdivisions) are drawn in brown.
+     * - Code is indented using 4 spaces.
+     ***************************************************************/
+
+    // Define vertical bounds
+    const yMin = 50, yMax = 350;
+
+    // Left and right curves: x = g1(y), x = g2(y)
+    function g1(y) {
+        // Example: wavy left boundary
+        return 80 + 30 * Math.sin((y - 50) / 30);
+    }
+    function g2(y) {
+        // Example: wavy right boundary
+        return 400 + 20 * Math.cos((y - 50) / 40);
+    }
+
+    // p5 Sketch for Type II region
+    let typeIIRegionSketch = function(p) {
+        let slider;
+        let divisions = 10; // default number of subintervals in the y-direction
+
+        p.setup = function() {
+            let canvas = p.createCanvas(500, 400);
+            canvas.parent("typeIIRegionCanvas");
+
+            // Slider for the number of horizontal slices
+            slider = p.createSlider(5, 80, divisions, 1);
+            slider.parent("typeIISliderContainer");
+        };
+
+        p.draw = function() {
+            p.background(240);
+            divisions = slider.value();
+            document.getElementById("typeIISubdivValue").textContent = divisions;
+
+            // 1) Draw midpoint‑rule rectangles in semi‑transparent orange
+            let dy = (yMax - yMin) / divisions;
+            p.noStroke();
+            p.fill(255, 165, 0, 100); // semi-transparent orange fill
+
+            for (let i = 0; i < divisions; i++) {
+                let y0 = yMin + i * dy;
+                let y1 = y0 + dy;
+                let yMid = (y0 + y1) / 2;
+
+                // Evaluate left and right boundaries at yMid
+                let xLeft  = g1(yMid);
+                let xRight = g2(yMid);
+
+                // Convert to p5 canvas coordinates
+                let topCanvasY = p.height - y1;
+                let sliceHeight = dy;
+                let sliceWidth  = xRight - xLeft;
+
+                p.rect(xLeft, topCanvasY, sliceWidth, sliceHeight);
+            }
+
+            // 2) Draw boundary curves in purple
+            p.stroke(128, 0, 128);  // purple
+            p.strokeWeight(3);
+            p.noFill();
+
+            // Left boundary: x = g1(y)
+            p.beginShape();
+            for (let y = yMin; y <= yMax; y += 5) {
+                p.vertex(g1(y), p.height - y);
+            }
+            p.endShape();
+
+            // Right boundary: x = g2(y)
+            p.beginShape();
+            for (let y = yMin; y <= yMax; y += 5) {
+                p.vertex(g2(y), p.height - y);
+            }
+            p.endShape();
+
+            // 3) Draw all horizontal lines in the same color (brown)
+            p.stroke(139, 69, 19); // brown
+            
+            for (let i = 0; i <= divisions; i++) {
+                let yVal = yMin + i * dy;
+                let xLeft  = g1(yVal);
+                let xRight = g2(yVal);
+                let canvasY = p.height - yVal;
+                
+                if(i == 0 || i == divisions) {
+                    p.strokeWeight(3);
+                }
+                else {
+                    p.strokeWeight(1);
+                }
+                p.line(xLeft, canvasY, xRight, canvasY);
+            }
+        };
+    };
+
+    // Instantiate the Type II region sketch
+    new p5(typeIIRegionSketch);
+  </script>
+</body>
+</html>

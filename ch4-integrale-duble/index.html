@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 
 <head>
-  <!-- EXTERNAL LIBRARIES - p5.js and MathJAX -->
+  <!-- EXTERNAL LIBRARIES - p5.js and MathJax -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
   <script id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
 
   <!-- PERSONAL STYLES and SCRIPTS -->
-  <!-- Încercăm ambele abordări, poate una va funcționa -->
+  <!-- Includere CSS cu ambele căi pentru compatibilitate -->
   <link rel="stylesheet" href="/resurse/css/general.css">
   <link rel="stylesheet" href="../resources/css/general.css">
   <link rel="stylesheet" href="/resurse/css/lecture.css">
@@ -20,17 +20,26 @@
   <link rel="stylesheet" href="/resurse/css/nav700.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <script src="/resurse/scripts/riemann_integral_animations.js"></script>
+  <!-- Scripturi pentru animațiile integralelor duble - încercăm toate căile posibile -->
+  <script src="/resurse/scripts/double_integrals_typeI_region.js"></script>
+  <script src="/resurse/scripts/double_integrals_typeII_region.js"></script>
+  <script src="/resurse/scripts/double_integrals_arbitrary_region.js"></script>
+  <script src="/resources/scripts/double_integrals_typeI_region.js"></script>
+  <script src="/resources/scripts/double_integrals_typeII_region.js"></script>
+  <script src="/resources/scripts/double_integrals_arbitrary_region.js"></script>
+  <script src="../resources/scripts/double_integrals_typeI_region.js"></script>
+  <script src="../resources/scripts/double_integrals_typeII_region.js"></script>
+  <script src="../resources/scripts/double_integrals_arbitrary_region.js"></script>
 
-  <!-- Adăugare font Ubuntu -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
   
+
   <!-- META TAGS and TITLE -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Capitolul 1: Sume Darboux și Riemann. Integrala Riemann</title>
+  <title>Integrale Duble - Concepte de bază</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -66,13 +75,8 @@
             <a href="/ch1-integrala-riemann/Integrala-Riemann" class="ubuntu-regular"><i class="fa-solid fa-calculator"></i> Integrala Riemann</a>
           </li>
           
-          <li class="has-submenu">
-            <input type="checkbox" id="submenu-toggle-3" class="submenu-toggle">
+          <li>
             <a href="/ch2-integrale-improprii/doc1" class="ubuntu-regular"><i class="fa-solid fa-infinity"></i> Integrale Improprii</a>
-            <ul>
-              <li><a href="/ch2-integrale-improprii/doc1" class="ubuntu-regular"><i class="fa-solid fa-book"></i> Documentație</a></li>
-              <li><a href="/ch2-integrale-improprii/exercitii" class="ubuntu-regular"><i class="fa-solid fa-tasks"></i> Exerciții propuse</a></li>
-            </ul>
           </li>
           
           <li class="has-submenu">
@@ -119,141 +123,161 @@
     </nav>
   </header>
 
+  <!-- MAIN PAGE CONTENT -->
   <div class="section">
-    <h1>Capitolul 1<br>Sume Darboux și Riemann. Integrala Riemann</h1>
-    <div class="definition-box">      
-      <h2>Partiționarea unui interval</h2>
+    <h1>Capitolul 4<br>Integrale Duble</h1>
+
+    <!-- NAVIGATION LINKS -->
+    <div class="nav-links" style="margin-bottom: 20px;">
+      <a href="./index.html">Integrale Duble - Concepte de bază</a>
+      <a href="./tipI.html">Regiuni de Tip I</a>
+      <a href="./tipII.html">Regiuni de Tip II</a>
+      <a href="./regiuni-arbitrare.html">Regiuni Arbitrare</a>
+      <a href="./exercitii.html">Exerciții propuse</a>
+    </div>
+
+    <!-- INTRODUCTION TO DOUBLE INTEGRALS -->
+    <div class="definition-box">
+      <h2>Definiția Integralei Duble</h2>
       <p>
-        Fie un interval \([a,b]\). O <em>partiționare</em> \(P\) a acestui interval este o mulțime finită de puncte:
+        O <em>integrală dublă</em> reprezintă integrarea unei funcții de două variabile \(f(x,y)\) 
+        peste un domeniu bidimensional \(D\). Notația uzuală este:
       </p>
       <div class="math-equation">
         \[
-          a = x_0 &lt; x_1 &lt; \dots &lt; x_n = b,
+          \iint_D f(x,y) \,dA \quad \text{sau} \quad \iint_D f(x,y) \,dx\,dy
         \]
       </div>
       <p>
-        care împarte \([a,b]\) în subintervale adiacente. Pentru o partiționare uniformă:
+        Integrala dublă poate fi interpretată ca volumul sub suprafața definită de \(z = f(x,y)\) 
+        deasupra domeniului \(D\) în planul \(xy\).
       </p>
-      <div class="math-equation">
-        \[
-          x_{i} - x_{i-1} = \frac{b-a}{n} \quad \text{pentru toate valorile } i = 1,\dots,n.
-        \]
-      </div>
     </div>
   </div>
 
-  <!-- SUMA DARBOUX INFERIOARĂ -->
+  <!-- TYPES OF REGIONS -->
   <div class="section">
     <div class="definition-box">
-      <h2>Suma Darboux Inferioară</h2>
+      <h2>Tipuri de Regiuni de Integrare</h2>
       <p>
-        Definim <em>suma Darboux inferioară</em> pentru fiecare subinterval 
-        \([x_{i-1}, x_i]\) ca fiind
+        Pentru a calcula o integrală dublă, adesea transformăm problema în integrale iterate.
+        În funcție de forma regiunii \(D\), utilizăm abordări diferite:
       </p>
-      <div class="math-equation">
-        \[
-          L(f,P) = \sum_{i=1}^{n} m_i \,\bigl(x_i - x_{i-1}\bigr), \quad m_i = \inf \{f(x) : x \in [x_{i-1}, x_i]\}.
-        \]
-      </div>
-      <p>
-        Cu alte cuvinte, în fiecare subinterval, luăm valoarea minimă a funcției și construim un dreptunghi cu acea înălțime.
-      </p>
+      <ul>
+        <li>
+          <strong>Regiuni de Tip I:</strong> Domenii care pot fi descrise ca fiind între două curbe \(y = f_1(x)\) și \(y = f_2(x)\), 
+          pentru \(x\) variind între limite fixe \(a\) și \(b\).
+        </li>
+        <li>
+          <strong>Regiuni de Tip II:</strong> Domenii care pot fi descrise ca fiind între două curbe \(x = g_1(y)\) și \(x = g_2(y)\), 
+          pentru \(y\) variind între limite fixe \(c\) și \(d\).
+        </li>
+        <li>
+          <strong>Regiuni Arbitrare:</strong> Pentru domenii mai complexe, putem folosi schimbări de variabile 
+          sau descompunerea în regiuni mai simple.
+        </li>
+      </ul>
     </div>
+  </div>
+
+  <!-- TYPE I REGION VISUALIZATION -->
+  <div class="section">
     <div class="animation-container">
-      <h2>Animație: Suma Darboux Inferioară</h2>
-      <div id="lowerDarbouxCanvas"></div>
+      <h2>Vizualizare: Regiuni de Tip I</h2>
+      <div id="typeIRegionCanvas"></div>
       <div class="animation-controls">
-        <span>Număr subintervale: <span id="lowerDarbouxValue">4</span></span>
-        <span id="lowerDarbouxSliderContainer"></span>
+        <span>Subdiviziuni: <span id="typeISubdivValue">10</span></span>
+        <span id="typeISliderContainer"></span>
       </div>
+      <p>
+        Animația ilustrează modul în care o regiune de tip I este împărțită în dreptunghiuri verticale.
+        Pentru o regiune de acest tip, integram mai întâi în raport cu \(y\) și apoi în raport cu \(x\).
+      </p>
     </div>
   </div>
 
- <!-- SUMA DARBOUX SUPERIOARĂ -->
+  <!-- TYPE II REGION VISUALIZATION -->
   <div class="section">
-    <div class="definition-box">
-      <h2>Suma Darboux Superioară</h2>
-      <p>
-        În mod similar, <em>suma Darboux superioară</em> folosește valoarea supremă a funcției pe fiecare subinterval:
-      </p>
-      <div class="math-equation">
-        \[
-          U(f,P) = \sum_{i=1}^{n} M_i \,\bigl(x_i - x_{i-1}\bigr), \quad M_i = \sup \{f(x) : x \in [x_{i-1}, x_i]\}.
-        \]
-      </div>
-      <p>
-        Aici, dreptunghiurile vor avea înălțimea maximă a funcției în subinterval.
-      </p>
-    </div>
     <div class="animation-container">
-      <h2>Animație: Suma Darboux Superioară</h2>
-      <div id="upperDarbouxCanvas"></div>
+      <h2>Vizualizare: Regiuni de Tip II</h2>
+      <div id="typeIIRegionCanvas"></div>
       <div class="animation-controls">
-        <span>Număr subintervale: <span id="upperDarbouxValue">4</span></span>
-        <span id="upperDarbouxSliderContainer"></span>
+        <span>Subdiviziuni: <span id="typeIISubdivValue">10</span></span>
+        <span id="typeIISliderContainer"></span>
       </div>
+      <p>
+        Animația ilustrează modul în care o regiune de tip II este împărțită în dreptunghiuri orizontale.
+        Pentru o regiune de acest tip, integram mai întâi în raport cu \(x\) și apoi în raport cu \(y\).
+      </p>
     </div>
   </div>
 
-  <!-- SUMA RIEMANN -->
+  <!-- ARBITRARY REGION VISUALIZATION -->
   <div class="section">
-    <div class="definition-box">
-      <h2>Suma Riemann</h2>
-      <p>
-        În definiția <em>sumei Riemann</em>, pentru fiecare subinterval
-        \([x_{i-1}, x_i]\) alegem un punct arbitrar \(\xi_i \in (x_{i-1}, x_i)\).
-        Suma Riemann devine
-      </p>
-      <div class="math-equation">
-        \[
-          S(P, f, \{\xi_i\}) = \sum_{i=1}^n f(\xi_i)\,\bigl(x_i - x_{i-1}\bigr).
-        \]
-      </div>
-      <p>
-        Mai jos, alegem un punct aleator \(\xi_i\) fixat în fiecare subinterval,
-        și putem mări numărul de subintervale
-        pentru a vedea cum se apropie de integrala reală.
-      </p>
-    </div>
     <div class="animation-container">
-      <h2>Animație: Suma Riemann</h2>
-      <div id="riemannCanvas"></div>
+      <h2>Vizualizare: Regiuni Arbitrare (Exemplu)</h2>
+      <div id="arbitraryRegionCanvas"></div>
       <div class="animation-controls">
-        <span>Număr subintervale: <span id="riemannValue">4</span></span>
-        <span id="riemannSliderContainer"></span>
+        <span>Subdiviziuni: <span id="arbitraryRegionSubdivValue">15</span></span>
+        <span id="arbitraryRegionSliderContainer"></span>
+      </div>
+      <p>
+        Animația ilustrează o regiune arbitrară și abordarea de integrare pentru aceasta. Observați cum regiunea este acoperită cu o rețea de dreptunghiuri mici pentru aproximarea integralei duble.
+      </p>
+    </div>
+  </div>
+
+  <!-- FORMULA SECTION -->
+  <div class="section">
+    <div class="definition-box">
+      <h2>Formule pentru Integrale Duble</h2>
+      <p>Pentru o regiune de Tip I:</p>
+      <div class="math-equation">
+        \[
+          \iint_D f(x,y) \,dA = \int_a^b \int_{f_1(x)}^{f_2(x)} f(x,y) \,dy\,dx
+        \]
+      </div>
+
+      <p>Pentru o regiune de Tip II:</p>
+      <div class="math-equation">
+        \[
+          \iint_D f(x,y) \,dA = \int_c^d \int_{g_1(y)}^{g_2(y)} f(x,y) \,dx\,dy
+        \]
       </div>
     </div>
   </div>
 
+  <!-- EXAMPLE SECTION -->
   <div class="section">
     <div class="definition-box">
-      <h2>Integrala Riemann</h2>
+      <h2>Exemplu Rezolvat</h2>
       <p>
-        Integrala Riemann a funcției \(f\) pe intervalul \([a,b]\) se definește ca limita sumei Riemann:
+        Să calculăm integrala dublă a funcției \(f(x,y) = x^2 + y^2\) pe discul \(D\) definit de \(x^2 + y^2 \leq 1\).
+      </p>
+      <p>
+        Putem folosi coordonate polare pentru a simplifica calculul:
+      </p>
       <div class="math-equation">
         \[
-          \int_a^b f(x)\,dx = \lim_{n \to \infty} \sum_{i=1}^n f(\xi_i)(x_i - x_{i-1}),
+          \begin{align}
+            \iint_D (x^2 + y^2) \,dA &= \int_0^{2\pi} \int_0^1 r^2 \cdot r \,dr\,d\theta \\
+            &= \int_0^{2\pi} \int_0^1 r^3 \,dr\,d\theta \\
+            &= \int_0^{2\pi} \left[ \frac{r^4}{4} \right]_0^1 \,d\theta \\
+            &= \int_0^{2\pi} \frac{1}{4} \,d\theta \\
+            &= \frac{1}{4} \cdot 2\pi \\
+            &= \frac{\pi}{2}
+          \end{align}
         \]
       </div>
-      </p>
-      <p>
-        unde \(P: a=x_0 &lt; x_1 &lt; \dots &lt; x_n=b\) este o partiționare a intervalului, iar \(\xi_i \in [x_{i-1}, x_i]\) sunt punctele de evaluare, arbitrare, fixate.
-      </p>
-      <p>Pentru o partiționare uniformă avem și:</p>
-      <div class="math-equation">
-        \[
-          x_{i} - x_{i-1} = \frac{b-a}{n} \quad \text{pentru toate valorile } i = 1,\dots,n.
-        \]
-      </div>
-      <p>
-        Dacă limita de mai sus există și este independentă de modul în care sunt alese punctele \(\xi_i\),
-        atunci funcția \(f\) este integrabilă pe \([a,b]\), iar această limită reprezintă integrala Riemann.
-      </p>
-      <p>
-        De asemenea, dacă suma Darboux inferioară \(L(f,P)\) este egală cu suma Darboux superioară \(U(f,P)\),
-        atunci funcția \(f\) este integrabilă pe \([a,b]\).
-      </p>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+        <p>&copy; 2024 Tutoriat Matematici Speciale. Toate drepturile rezervate.</p>
+    </div>
+  </footer>
 </body>
+
 </html>

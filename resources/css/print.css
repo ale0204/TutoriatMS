@@ -91,7 +91,7 @@
       z-index: -1;
       white-space: pre; /* Pentru a interpreta \A ca un line break */
       line-height: 1.2;
-      transform: rotate(-30deg); /* Rotire pentru aspect de watermark */
+      transform: rotate(-30deg); /* Rotire pt aspect de watermark */
     }
   
     /* Stilizare meniu pentru printare */

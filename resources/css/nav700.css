@@ -1,6 +1,6 @@
-/* CSS pentru meniu responsiv - doar pentru tablete și telefoane mobile */
+/* CSS pentru meniu responsiv - doar pentru tablete si telefoane mobile */
 
-/* Variabile de bază (dacă nu sunt deja definite în general.css) */
+/* Variabile de baza (daca nu sunt deja definite in general.css) */
 :root {
     --menu-bg-color: #3a6d96;
     --menu-text-color: #ffffff;
@@ -13,8 +13,8 @@
     --hamburger-animation-color3: #ffd700; /* Gold */
 }
 
-/* Ajustează poziționarea header-ului pentru a asigura că hamburger menu 
-   apare în colțul stânga sus al navbar-ului, nu al header-ului */
+/* Ajusteaza pozitionarea header-ului pentru a asigura ca hamburger menu 
+   apare in coltul stanga sus al navbar-ului, nu al header-ului */
 header {
   position: relative;
 }
@@ -31,7 +31,7 @@ header {
   color: var(--menu-text-color);
   position: relative;
   z-index: 110;
-  text-align: left; /* Aliniere la stânga în loc de centru */
+  text-align: left; /* Aliniere la stanga in loc de centru */
 }
 
 /* Container pentru icon-ul hamburger */
@@ -54,17 +54,17 @@ header {
   transition: all 0.3s ease-in-out;
 }
 
-/* Poziționarea fiecărei linii */
+/* Pozitionarea fiecarei linii */
 .hamburger-line:nth-child(1) {
   top: 0;
 }
 
 .hamburger-line:nth-child(2) {
-  top: 10px; /* Poziționat la mijloc */
+  top: 10px; /* Pozitionat la mijloc */
 }
 
 .hamburger-line:nth-child(3) {
-  top: 20px; /* Poziționat jos */
+  top: 20px; /* Pozitionat jos */
 }
 
 /* Stilizarea checkbox-urilor pentru submeniuri */
@@ -76,12 +76,12 @@ header {
   width: 0;
 }
 
-/* Zona clickabilă pentru submeniuri pe mobil */
+/* Zona clickabila pentru submeniuri pe mobil */
 .navbar .submenu-label {
   display: none;
 }
 
-/* Definirea animațiilor pentru apariția iconului hamburger */
+/* Definirea animatiilor pentru aparitia iconului hamburger */
 @keyframes hamburger-line-animation {
   0% {
     transform: translateY(-10px) scale(0);
@@ -108,7 +108,7 @@ header {
     font-size: 0.9em;
   }
   
-  /* Înlocuiește textul "Acasă" cu icon-ul de căsuță */
+  /* inlocuieste textul "Acasa" cu icon-ul de casuta */
   .navbar .menu-container > ul > li:first-child > a span.home-text {
     display: none;
   }
@@ -121,13 +121,13 @@ header {
 
 /* Stiluri pentru ecran mic (max 768px) - TELEFON MOBIL */
 @media screen and (max-width: 768px) {
-  /* Repoziționare hamburger în colțul stânga sus */
+  /* Repozitionare hamburger in coltul stanga sus */
   .navbar {
     position: relative;
-    min-height: 54px; /* Asigură că navbar-ul are o înălțime minimă pentru a afișa butonul hamburger */
+    min-height: 54px; /* Asigura ca navbar-ul are o inaltime minima pentru a afisa butonul hamburger */
   }
   
-  /* Arată checkbox-ul hamburger (ascuns vizual) și label-ul */
+  /* Arata checkbox-ul hamburger (ascuns vizual) si label-ul */
   .navbar .hamburger-toggle {
     display: block;
     position: absolute;
